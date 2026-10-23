@@ -2,7 +2,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-20">
             <!-- Brand Logo -->
-            <a href="{{ route('home') }}" class="group flex items-center gap-3.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-safety-orange focus-visible:ring-offset-2 focus-visible:ring-offset-industry-black rounded-lg p-1 transition-transform" aria-label="Training Alat Berat - Beranda">
+            <a href="{{ route('home') }}" class="group flex items-center gap-3.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-safety-orange focus-visible:ring-offset-2 focus-visible:ring-offset-industry-black rounded-lg p-1 transition-transform" aria-label="Training K3 Listrik - Beranda">
                 <div class="w-11 h-11 rounded-lg bg-burnt-brick border border-burnt-brick/80 flex items-center justify-center text-white shadow-inner group-hover:border-safety-orange transition-colors">
                     <!-- Safety Shield & Cross SVG -->
                     <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -13,10 +13,10 @@
                 </div>
                 <div class="flex flex-col">
                     <span class="text-base sm:text-lg font-bold tracking-tight text-white group-hover:text-safety-orange transition-colors uppercase">
-                        Training <span class="text-safety-orange">Alat Berat</span>
+                        <span class="text-safety-orange">K3 Listrik</span>
                     </span>
                     <span class="text-xs text-neutral-300 font-medium tracking-wide">
-                        Sertifikasi Operator Alat Berat
+                        Pelatihan Keselamatan Kerja Kelistrikan
                     </span>
                 </div>
             </a>
@@ -24,10 +24,7 @@
             <!-- Desktop Navigation -->
             <nav class="hidden lg:flex items-center gap-7" role="navigation" aria-label="Navigasi Utama Desktop">
                 <a href="{{ route('home') }}#pelatihan" class="text-sm font-semibold text-neutral-200 hover:text-safety-orange transition-colors py-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-safety-orange rounded">
-                    Sertifikasi SIO
-                </a>
-                <a href="{{ route('home') }}#jasa" class="text-sm font-semibold text-neutral-200 hover:text-safety-orange transition-colors py-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-safety-orange rounded">
-                    Jasa K3
+                    Pelatihan
                 </a>
                 <a href="{{ route('home') }}#keunggulan" class="text-sm font-semibold text-neutral-200 hover:text-safety-orange transition-colors py-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-safety-orange rounded">
                     Keunggulan
@@ -76,10 +73,7 @@
          aria-label="Navigasi Utama Seluler">
         <div class="flex flex-col space-y-3 pt-2">
             <a href="{{ route('home') }}#pelatihan" class="mobile-nav-link text-base font-semibold text-neutral-200 hover:text-safety-orange hover:bg-dark-mahogany px-3 py-2.5 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-safety-orange">
-                Sertifikasi SIO
-            </a>
-            <a href="{{ route('home') }}#jasa" class="mobile-nav-link text-base font-semibold text-neutral-200 hover:text-safety-orange hover:bg-dark-mahogany px-3 py-2.5 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-safety-orange">
-                Jasa K3
+                Pelatihan
             </a>
             <a href="{{ route('home') }}#keunggulan" class="mobile-nav-link text-base font-semibold text-neutral-200 hover:text-safety-orange hover:bg-dark-mahogany px-3 py-2.5 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-safety-orange">
                 Keunggulan

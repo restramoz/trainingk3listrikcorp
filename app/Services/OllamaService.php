@@ -20,34 +20,98 @@ class OllamaService
     protected int $timeout;
 
     /**
-     * Standard Sertifikasi & Jasa Training Ahli K3 Umum core topics.
+     * Standard core topics for Training K3 Listrik Corp.
      *
      * @var array<int, array{name: string, focus: string}>
      */
     public const CORE_TOPICS = [
         [
-            'name' => 'Pengenalan Keselamatan dan Kesehatan Kerja (K3) di Tempat Kerja',
-            'focus' => 'Konsep dasar K3, identifikasi bahaya, penilaian risiko, dan pengendalian risiko umum di tempat kerja',
+            'name' => 'Pengelolaan Bahaya dan Risiko Kerja Kelistrikan',
+            'focus' => 'Identifikasi bahaya kerja listrik, penilaian risiko kelistrikan, hierarki pengendalian, dan prosedur kerja aman untuk peran penyelola keselamatan kelistrikan',
         ],
         [
-            'name' => 'Manajemen Risiko dan Sistem Manajemen K3',
-            'focus' => 'Perencanaan, implementasi, pemantauan, dan evaluasi sistem manajemen K3 secara umum',
+            'name' => 'Praktik Kerja Aman untuk Teknisi Instalasi Listrik',
+            'focus' => 'Pengamanan dan verifikasi energi, penggunaan alat ukur elektrik, pemeliharaan yang aman, saat memeriksa instalasi listrik',
         ],
         [
-            'name' => 'Alat Pelindung Diri dan Keselamatan Kerja Dasar',
-            'focus' => 'Pemilihan, penggunaan, pemeliharaan, dan batasan alat pelindung diri yang umum',
+            'name' => 'Operasional dan Pemeliharaan Kelistrikan Gedung',
+            'focus' => 'Panel distribusi gedung, building services, pemantauan beban penting, pemeliharaan preventif, dan koordinasi antar sistem bangunan',
         ],
         [
-            'name' => 'Tanggap Darurat, Evakuasi, dan P3K di Tempat Kerja',
-            'focus' => 'Prosedur tanggap darurat, evakuasi, komunikasi krisis, dan pertolongan pertama yang umum',
+            'name' => 'Diagnostik Sistem Kelistrikan Kendaraan',
+            'focus' => 'Baterai, sistem pengisian dan starting, sirkuit konsumen, jaringan data kendaraan, serta pencarian titik gangguan secara aman',
         ],
         [
-            'name' => 'Inspeksi, Audit, dan Peningkatan Berkelanjutan K3',
-            'focus' => 'Inspeksi rutin, audit internal, tindak lanjut temuan, dan peningkatan berkelanjutan',
+            'name' => 'Pemeriksaan dan Penilaian Instalasi Listrik',
+            'focus' => 'Rencana inspeksi, daftar periksa, pengujian dasar instalasi, klasifikasi temuan, dan pelaporan hasil pemeriksaan',
         ],
         [
-            'name' => 'Komunikasi, Pelaporan, dan Budaya K3',
-            'focus' => 'Pelaporan insiden, komunikasi keselamatan, dan pembentukan budaya kerja yang aman',
+            'name' => 'Pengawasan Pekerjaan pada Instalasi Bersumber Energi Listrik',
+            'focus' => 'Telaah izin bekerja, verifikasi kesiapan kerja, penegakan prosedur di lapangan, dan penghentian pekerjaan berbahaya',
+        ],
+        [
+            'name' => 'Kepemimpinan Tim Pemeliharaan Kelistrikan',
+            'focus' => 'Penugasan kerja aman, kontrol mutu pemeliharaan, komunikasi risiko, dan pembinaan personel listrik',
+        ],
+        [
+            'name' => 'Operasi Sehari-hari Panel dan Peralatan Listrik',
+            'focus' => 'Prosedur pensaklaran, pemindahan suplai, pemantauan parameter, log operasional, dan respons awal gangguan',
+        ],
+        [
+            'name' => 'Manajemen Fungsi Kelistrikan di Tingkat Organisasi',
+            'focus' => 'Strategi pemeliharaan, anggaran, indikator keselamatan dan keandalan, serta tata kelola keselamatan kerja listrik',
+        ],
+        [
+            'name' => 'Dukungan Administratif untuk Unit Kelistrikan',
+            'focus' => 'Administrasi dokumen kerja, pengelolaan material dan suku cadang elektrik, pencatatan data pemeliharaan, dan koordinasi lintas fungsi',
+        ],
+        [
+            'name' => 'Rangkaian dan Modul Kendali Elektronik',
+            'focus' => 'Komponen elektronik, catu daya, sensor dan modul kendali, pengukuran sinyal, dan penanganan aman perangkat elektronik',
+        ],
+        [
+            'name' => 'Sistem Kelistrikan Kendaraan Operasional',
+            'focus' => 'Baterai dan starting kapasitas besar, rangkaian kontrol dan sensor unit, alternator, serta kerja aman di area unit operasional',
+        ],
+        [
+            'name' => 'Sistem Pembangkit Listrik Fotovoltaik',
+            'focus' => 'Komponen sistem tenaga surya, rangkaian DC dan AC, proteksi sisi DC, pemeriksaan sistem, dan keselamatan kerja di atap',
+        ],
+        [
+            'name' => 'Perencanaan Kebutuhan Tenaga Listrik Fasilitas',
+            'focus' => 'Estimasi dan pemetaan beban, konfigurasi suplai dan cadangan, keandalan, serta dokumentasi perencanaan kelistrikan',
+        ],
+        [
+            'name' => 'Kendali Otomatis pada Lini Produksi',
+            'focus' => 'Sensor, aktuator, interlock, urutan kerja proses, alarm status, proteksi keselamatan mesin, dan pemecahan gangguan otomasi',
+        ],
+        [
+            'name' => 'Diagnostik Gangguan Kelistrikan Tingkat Lanjut',
+            'focus' => 'Gangguan kompleks dan berulang, analisis akar penyebab, rekaman alarm, koordinasi pemeliharaan besar, dan pembinaan teknisi',
+        ],
+        [
+            'name' => 'Pemantauan Supervisi Data Kelistrikan Terpusat',
+            'focus' => 'Konsep telemetri, alarm, layar operator, perintah jarak jauh, telaah kejadian, dan disiplin pengendalian terpusat',
+        ],
+        [
+            'name' => 'Sistem Pembumian Instalasi Listrik',
+            'focus' => 'Fungsi dan komponen pembumian, penyambungan, korosi, pengukuran tahanan pembumian, dan perannya pada proteksi orang',
+        ],
+        [
+            'name' => 'Rangkaian Kendali Konvensional Tanpa Pengendali Terprogram',
+            'focus' => 'Relai, kontaktor, timer, interlock terpasang kabel, pembacaan skema, dan penelusuran gangguan langkah demi langkah',
+        ],
+        [
+            'name' => 'Pengendali Terprogram dari Dasar Pembacaan Program',
+            'focus' => 'Struktur program, input-output, dasar ladder, diagnosa perangkat, disiplin cadangan program, dan alur persetujuan perubahan',
+        ],
+        [
+            'name' => 'Distribusi Daya Fasilitas Produksi',
+            'focus' => 'Alur daya pabrik dari catu utama ke beban motor, proteksi per tingkat, keseimbangan fasa, pencatatan energi, dan kerja aman produksi',
+        ],
+        [
+            'name' => 'Instalasi Listrik Bangunan dari Sirkuit Proteksi',
+            'focus' => 'Jalur kabel, sirkuit, perangkat proteksi, mutu pemasangan dan terminasi, penandaan sirkuit, serta pemeriksaan instalasi bangunan',
         ],
     ];
 
@@ -109,9 +173,21 @@ class OllamaService
         $count = count($existingTitles) + 1;
 
         return [
-            'topic' => "Strategi Kepatuhan K3 & Penerapan SMK3 di {$cityName} (Bagian {$count})",
-            'focus' => 'Penerapan SMK3 PP 50/2012, pembentukan P2K3, identifikasi bahaya HIRADC, investigasi insiden, dan pemenuhan regulasi K3 tempat kerja',
+            'topic' => "Strategi Keselamatan Kerja Kelistrikan di {$cityName} (Bagian {$count})",
+            'focus' => 'Penerapan sistem manajemen keselamatan kerja kelistrikan, identifikasi bahaya, investigasi insiden, dan pemenuhan ketentuan K3 tempat kerja',
         ];
+    }
+
+    /**
+     * Build the program-context line for the system prompt.
+     */
+    protected function serviceContextLine(?string $serviceName): string
+    {
+        if ($serviceName === null || $serviceName === '') {
+            return 'Tidak ada program spesifik; gunakan konteks pelatihan K3 Listrik secara umum.';
+        }
+
+        return "Program spesifik: {$serviceName}. Konsentrasikan isi artikel pada lingkup program tersebut.";
     }
 
     /**
@@ -150,6 +226,14 @@ class OllamaService
         $citySlug = $params['city_slug'] ?? null;
         $wordCount = $this->resolveWordCount($params['word_count'] ?? 7500);
 
+        // Optional service-aware generation: validate against the catalog.
+        $serviceSlug = isset($params['service_slug']) ? (string) $params['service_slug'] : null;
+        $serviceName = null;
+        if ($serviceSlug !== null && $serviceSlug !== '') {
+            $service = config("programs.{$serviceSlug}");
+            $serviceName = is_array($service) && ! empty($service['title']) ? (string) $service['title'] : null;
+        }
+
         // Auto topic selection if not manually provided
         if (empty($params['topic'])) {
             $selected = $this->pickTopicForRegion($cityName, $citySlug);
@@ -157,23 +241,25 @@ class OllamaService
             $focus = $selected['focus'];
         } else {
             $topic = trim((string) $params['topic']);
-            $focus = $params['focus'] ?? 'Kompetensi K3 umum sesuai kebutuhan tempat kerja';
+            $focus = $params['focus'] ?? 'Kompetensi K3 Listrik sesuai kebutuhan tempat kerja';
         }
 
         $locationContext = $districtName ? "Kecamatan {$districtName}, {$cityName}" : $cityName;
 
         $systemPrompt = <<<PROMPT
-Anda adalah konsultan dan instruktur K3 (Keselamatan dan Kesehatan Kerja) Indonesia.
-Tugas Anda adalah menulis artikel edukatif dan otoritatif dalam Bahasa Indonesia formal mengenai Training Ahli K3 Umum. Struktur artikel harus mencakup: Pembuka (intro), Silabus, Materi, Isi Konten, dan Penutup (conclusion).
+Anda adalah konsultan dan instruktur K3 (Keselamatan dan Kesehatan Kerja) Indonesia yang berspesialisasi pada keselamatan kerja kelistrikan.
+Tugas Anda adalah menulis artikel edukatif dan otoritatif dalam Bahasa Indonesia formal mengenai Training K3 Listrik. Struktur artikel harus mencakup: Pembuka (intro), Silabus, Materi, Isi Konten, dan Penutup (conclusion).
+PERTIMBANGAN PROGRAM: {$this->serviceContextLine($serviceName)}
 
-ATURAN KUALITAS & GAYA PENULISAN:
-1. Nada bahasa: Profesional, lugas, mengalir alami, berbobot untuk pengambil keputusan dan praktisi K3.
+ATURAN KUALITATAS & GAYA PENULISAN:
+1. Nada bahasa: Profesional, lugas, mengalir alami, berbobot untuk pengambil keputusan dan praktisi kelistrikan.
 2. Dilarang menggunakan filler AI klise seperti "Di era modern saat ini", "Tak dapat dipungkiri", atau kalimat berulang.
 3. Rujuk regulasi K3 hanya jika Anda yakin terhadap sumber resminya. Jangan mengarang nomor regulasi, pasal, jadwal tetap, biaya fiktif, alamat kantor palsu, atau klaim akreditasi/otorisasi.
 4. Jangan mengarang jadwal tetap, biaya fiktif, alamat kantor palsu, atau klaim akreditasi sepihak. Arahkan konsultasi resmi melalui WhatsApp.
 5. Gunakan tag HTML semantik: <h2>, <h3>, <p>, <ul>, <ol>, <li>, <strong>, <blockquote>, <table><thead><tr><th>...</th></tr></thead><tbody><tr><td>...</td></tr></tbody></table>.
 6. Panjang target: Sekitar {$wordCount} kata (antara 6.000 hingga 9.000 kata).
 7. Buat image_brief terpisah yang siap digunakan oleh desainer di Google Flow untuk menghasilkan gambar fotografi realistis beresolusi tinggi TANPA teks di gambar.
+8. Bila program pelatihan spesifik disebutkan, konsentrasikan materi pada lingkup program tersebut dan hindari menyerempet program pelatihan lain.
 
 OUTPUT WAJIB:
 Kembalikan HANYA dokumen JSON murni tanpa pembungkus markdown ```json ```.
@@ -183,27 +269,29 @@ Format skema JSON yang wajib dipatuhi:
   "slug": "slug-url-ramah-seo",
   "excerpt": "Ringkasan eksekutif 2-3 kalimat mengenai intisari artikel.",
   "content": "<p>Isi artikel lengkap dalam HTML semantik...</p>",
-  "seo_title": "SEO Title Max 60 Karakter | Training Ahli K3 Umum",
+  "seo_title": "SEO Title Max 60 Karakter | Training K3 Listrik",
   "meta_description": "Meta description persuasif max 155 karakter.",
   "suggested_faqs": [
     {"q": "Pertanyaan 1...", "a": "Jawaban ringkas 1..."},
     {"q": "Pertanyaan 2...", "a": "Jawaban ringkas 2..."}
   ],
   "image_brief": {
-    "concept": "Konsep visual foto keselamatan kerja industri atau pelatihan K3 dalam Bahasa Indonesia",
-    "english_prompt": "Detailed descriptive photo prompt in English for Google Flow: realistic photography, occupational safety and health briefing in modern Indonesian manufacturing plant or industrial facility, safety officer wearing high-visibility vest and hardhat conducting safety inspection with clipboard, industrial background, realistic lighting, sharp focus, no text overlays, 8k",
+    "concept": "Konsep visual foto keselamatan kerja kelistrikan industri atau pelatihan K3 Listrik dalam Bahasa Indonesia",
+    "english_prompt": "Detailed descriptive photo prompt in English for Google Flow: realistic photography, occupational electrical safety briefing in a modern Indonesian industrial facility, technician wearing personal protective equipment inspecting an electrical distribution panel, technician and supervisor discussing lockout procedure, industrial lighting, realistic, sharp focus, no text overlays, 8k",
     "aspect_ratio": "16:9",
     "recommended_alt": "Alt text ramah SEO dalam Bahasa Indonesia"
   }
 }
 PROMPT;
 
+        $serviceLine = $serviceName !== null ? "- Program Spesifik: {$serviceName}\n" : '';
+
         $userPrompt = <<<PROMPT
-Silakan buat artikel Training Ahli K3 Umum lengkap dengan rincian berikut:
+Silakan buat artikel pelatihan K3 Listrik lengkap dengan rincian berikut:
 - Topik Artikel: {$topic}
 - Fokus Materi: {$focus}
 - Lokasi Target: {$locationContext}
-- Target Jumlah Kata: ~{$wordCount} kata (antara 6.000 - 9.000 kata)
+{$serviceLine}- Target Jumlah Kata: ~{$wordCount} kata (antara 6.000 - 9.000 kata)
 
 Keluarkan HANYA JSON valid.
 PROMPT;
@@ -248,7 +336,7 @@ PROMPT;
                 ];
             }
 
-            $result = $this->parseResponse($rawContent, $topic, $cityName, $wordCount);
+            $result = $this->parseResponse($rawContent, $topic, $cityName, $wordCount, $serviceName);
 
             // ---------------------------------------------------------------------
             // Enforce word-count constraints before adding UI elements. Callouts
@@ -267,7 +355,7 @@ PROMPT;
             $attempt = 0;
             while ($generatedWordCount < 6000 && $attempt < $maxAttempts) {
                 $remaining = max(6000 - $generatedWordCount, 300);
-                $continuation = $this->requestContinuation($result['content'], $remaining, $cityName);
+                $continuation = $this->requestContinuation($result['content'], $remaining, $cityName, $serviceName);
                 if (! $continuation['success']) {
                     return $continuation;
                 }
@@ -291,7 +379,7 @@ PROMPT;
             }
 
             // After validation, inject five WhatsApp callouts.
-            $result = $this->addWhatsAppCallout($result, $cityName);
+            $result = $this->addWhatsAppCallout($result, $cityName, $serviceName);
 
             return $result;
         } catch (ConnectionException $e) {
@@ -316,8 +404,9 @@ PROMPT;
      *
      * @return array<string, mixed>
      */
-    public function parseResponse(string $rawContent, string $fallbackTopic, string $cityName, int $wordCount): array
+    public function parseResponse(string $rawContent, string $fallbackTopic, string $cityName, int $wordCount, ?string $serviceName = null): array
     {
+        $brandLine = $this->brandLine($serviceName);
         $cleaned = trim($rawContent);
 
         // Strip markdown code fences if present
@@ -371,10 +460,10 @@ PROMPT;
                 $imageBrief = [];
             }
 
-            $concept = $imageBrief['concept'] ?? "Penerapan kompetensi K3 umum di {$cityName}";
-            $englishPrompt = $imageBrief['english_prompt'] ?? 'Professional documentary photograph of a workplace safety training environment in Indonesia, safety officers and workers using personal protective equipment, realistic industrial environment, realistic lighting, 8k, no text';
+            $concept = $imageBrief['concept'] ?? "Penerapan kompetensi K3 Listrik di {$cityName}";
+            $englishPrompt = $imageBrief['english_prompt'] ?? 'Professional documentary photograph of an electrical safety training environment in Indonesia, technician in personal protective equipment performing a safe inspection of an electrical installation, realistic industrial lighting, no text';
             $aspectRatio = $imageBrief['aspect_ratio'] ?? '16:9';
-            $recommendedAlt = $imageBrief['recommended_alt'] ?? "Pelatihan & Pengelolaan Ahli K3 Umum di {$cityName}";
+            $recommendedAlt = $imageBrief['recommended_alt'] ?? "Pelatihan {$brandLine} di {$cityName}";
 
             $rawArticleContent = $this->sanitizeContent((string) ($decoded['content'] ?? ''));
 
@@ -384,7 +473,7 @@ PROMPT;
                 'slug' => ! empty($decoded['slug']) ? Str::slug($decoded['slug']) : Str::slug($decoded['title']),
                 'excerpt' => (string) ($decoded['excerpt'] ?? Str::limit(strip_tags($rawArticleContent), 180)),
                 'content' => $rawArticleContent,
-                'seo_title' => (string) ($decoded['seo_title'] ?? Str::limit($decoded['title'].' | Training Ahli K3 Umum', 60)),
+                'seo_title' => (string) ($decoded['seo_title'] ?? Str::limit($decoded['title']." | {$brandLine}", 60)),
                 'meta_description' => (string) ($decoded['meta_description'] ?? Str::limit($decoded['excerpt'] ?? '', 155)),
                 'suggested_faqs' => is_array($decoded['suggested_faqs'] ?? null) ? $decoded['suggested_faqs'] : [],
                 'image_brief' => [
@@ -418,16 +507,25 @@ PROMPT;
             'slug' => Str::slug($fallbackTopic),
             'excerpt' => Str::limit(strip_tags($fallbackHtml), 180),
             'content' => $fallbackHtml,
-            'seo_title' => Str::limit("{$fallbackTopic} | Training Ahli K3 Umum", 60),
-            'meta_description' => Str::limit("Panduan {$fallbackTopic} untuk kompetensi K3 umum di {$cityName}.", 155),
+            'seo_title' => Str::limit("{$fallbackTopic} | {$brandLine}", 60),
+            'meta_description' => Str::limit("Panduan {$fallbackTopic} untuk kompetensi K3 Listrik di {$cityName}.", 155),
             'suggested_faqs' => [],
             'image_brief' => [
-                'concept' => "Kompetensi K3 umum di {$cityName}",
-                'english_prompt' => 'Professional photograph of occupational health and safety inspection or briefing in modern industrial facility in Indonesia, realistic lighting, no text',
+                'concept' => "Kompetensi K3 Listrik di {$cityName}",
+                'english_prompt' => 'Professional photograph of an electrical safety inspection or briefing inside a modern industrial facility in Indonesia, realistic lighting, no text',
                 'aspect_ratio' => '16:9',
-                'recommended_alt' => "Training Ahli K3 Umum - {$fallbackTopic}",
+                'recommended_alt' => "{$brandLine} - {$fallbackTopic}",
             ],
         ];
+    }
+
+    /**
+     * Resolved display line used in article fallbacks: the specific program
+     * title when available, otherwise the general brand.
+     */
+    protected function brandLine(?string $serviceName): string
+    {
+        return ($serviceName === null || $serviceName === '') ? 'Training K3 Listrik' : $serviceName;
     }
 
     /**
@@ -436,9 +534,10 @@ PROMPT;
      * @param  array<string, mixed>  $result
      * @return array<string, mixed>
      */
-    protected function addWhatsAppCallout(array $result, string $cityName): array
+    protected function addWhatsAppCallout(array $result, string $cityName, ?string $serviceName = null): array
     {
         $content = $this->sanitizeContent($result['content'] ?? '');
+        $brandLine = $this->brandLine($serviceName);
 
         // Retrieve configured contacts; fallback to empty array.
         $contacts = config('services.whatsapp.callout_contacts', []);
@@ -479,11 +578,11 @@ PROMPT;
         // Insert callouts in reverse order so offsets remain valid.
         foreach (array_reverse($insertPoints, true) as $idx => $position) {
             $phone = $selected[$idx];
-            $message = "Halo, saya ingin konsultasi mengenai Training Ahli K3 Umum untuk wilayah {$cityName}.";
+            $message = "Halo, saya ingin konsultasi mengenai {$brandLine} untuk wilayah {$cityName}.";
             $waUrl = WhatsApp::url($message, $phone);
             $ctaHtml = '<div class="my-6 p-4 rounded-xl bg-concrete-100 border border-teal-300 flex flex-col sm:flex-row items-center justify-between gap-4 not-prose">'
                 .'<div>'
-                .'<div class="text-xs font-bold uppercase tracking-wider text-teal-700">Konsultasi Training Ahli K3 Umum '.$cityName.'</div>'
+                .'<div class="text-xs font-bold uppercase tracking-wider text-teal-700">Konsultasi '.$brandLine.' '.$cityName.'</div>'
                 .'<div class="text-sm font-semibold text-navy-950">Butuh informasi program pelatihan K3?</div>'
                 .'</div>'
                 .'<a href="'.$waUrl.'" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-orange-500 hover:bg-orange-600 text-white font-semibold text-xs transition shrink-0">'
@@ -506,10 +605,11 @@ PROMPT;
      * Request a continuation from Ollama for the given partial content.
      * Returns an array with keys: success (bool) and content (string) on success.
      */
-    protected function requestContinuation(string $existingContent, int $targetWords, string $cityName): array
+    protected function requestContinuation(string $existingContent, int $targetWords, string $cityName, ?string $serviceName = null): array
     {
         // Build a simple continuation prompt.
-        $systemPrompt = "Anda adalah editor artikel Training Ahli K3 Umum berbahasa Indonesia. Lanjutkan artikel yang diberikan dengan konten baru sekitar {$targetWords} kata. Jangan mengulang paragraf atau judul yang sudah ada. Output HANYA fragmen HTML valid menggunakan tag semantik seperti <h2>, <h3>, <p>, <ul>, <ol>, <li>, <strong>, dan <table> bila relevan. Jangan keluarkan JSON, markdown fence, komentar, atau metadata. Jika tidak dapat memenuhi seluruh target, tetap keluarkan fragmen HTML valid yang bermakna.";
+        $brandLine = $this->brandLine($serviceName);
+        $systemPrompt = "Anda adalah editor artikel {$brandLine} berbahasa Indonesia. Lanjutkan artikel yang diberikan dengan konten baru sekitar {$targetWords} kata. Jangan mengulang paragraf atau judul yang sudah ada. Output HANYA fragmen HTML valid menggunakan tag semantik seperti <h2>, <h3>, <p>, <ul>, <ol>, <li>, <strong>, dan <table> bila relevan. Jangan keluarkan JSON, markdown fence, komentar, atau metadata. Jika tidak dapat memenuhi seluruh target, tetap keluarkan fragmen HTML valid yang bermakna.";
         $userPrompt = "Konten artikel yang sudah ada (gunakan sebagai konteks, jangan salin ulang):\n{$existingContent}\n\nTambahkan bagian lanjutan yang relevan dan substantif sebanyak kira-kira {$targetWords} kata. Fokus pada informasi baru, contoh penerapan lapangan, prosedur, risiko, pengendalian, dan kepatuhan regulasi yang relevan. Kembalikan hanya fragmen HTML tambahan, bukan artikel lengkap.";
 
         try {

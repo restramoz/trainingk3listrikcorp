@@ -44,7 +44,7 @@ class RegionalPagesTest extends TestCase
 
         $response->assertStatus(200);
         $response->assertSee('Provinsi Jawa Barat');
-        $response->assertSee('Training Ahli K3 Umum');
+        $response->assertSee('Training Ahli K3 Listrik');
         $response->assertSee('Kabupaten &amp; Kota di Provinsi Jawa Barat', false);
 
         // Breadcrumb
@@ -52,18 +52,18 @@ class RegionalPagesTest extends TestCase
         $response->assertSee('Jawa Barat');
 
         // Program cards link to canonical program pages
-        $response->assertSee(route('program.show', 'training-ahli-k3-umum'), false);
-        $response->assertSee(route('program.show', 'training-k3-konstruksi'), false);
-        $response->assertSee(route('program.show', 'jasa-audit-smk3'), false);
+        $response->assertSee(route('program.show', 'training-ahli-k3-listrik'), false);
+        $response->assertSee(route('program.show', 'training-teknisi-k3-listrik'), false);
+        $response->assertSee(route('program.show', 'training-kelistrikan-building'), false);
 
         // Program cards render full canonical names
-        $response->assertSee('Training Ahli K3 Umum');
-        $response->assertSee('Training K3 Konstruksi');
-        $response->assertSee('Jasa Audit &amp; Penyusunan SMK3 (PP 50/2012)', false);
+        $response->assertSee('Training Ahli K3 Listrik');
+        $response->assertSee('Training Teknisi K3 Listrik');
+        $response->assertSee('Kelistrikan Building', false);
 
         // WhatsApp CTA
         $response->assertSee('wa.me', false);
-        $response->assertSee(rawurlencode('Halo, saya dari Provinsi Jawa Barat dan ingin konsultasi mengenai Training Ahli K3 Umum.'), false);
+        $response->assertSee(rawurlencode('Halo, saya dari Provinsi Jawa Barat dan ingin konsultasi mengenai pelatihan K3 Listrik.'), false);
 
         // Province must be indexable (no "noindex")
         $response->assertDontSee('content="noindex');
@@ -79,9 +79,9 @@ class RegionalPagesTest extends TestCase
         foreach (['jawa-barat', 'jawa-timur', 'dki-jakarta'] as $slug) {
             $response = $this->get(route('regional.province', $slug));
             $response->assertStatus(200);
-            $response->assertSee(route('program.show', 'training-ahli-k3-umum'), false);
-            $response->assertSee(route('program.show', 'training-k3-konstruksi'), false);
-            $response->assertSee(route('program.show', 'jasa-audit-smk3'), false);
+            $response->assertSee(route('program.show', 'training-ahli-k3-listrik'), false);
+            $response->assertSee(route('program.show', 'training-teknisi-k3-listrik'), false);
+            $response->assertSee(route('program.show', 'training-kelistrikan-building'), false);
         }
     }
 
@@ -112,23 +112,23 @@ class RegionalPagesTest extends TestCase
         $response->assertSee(route('regional.province', 'jawa-barat'), false);
 
         // Programs with full titles personalized for city
-        $response->assertSee('Training Ahli K3 Umum — Kota Bandung');
-        $response->assertSee('Training K3 Konstruksi — Kota Bandung');
-        $response->assertSee('Jasa Audit &amp; Penyusunan SMK3 (PP 50/2012) — Kota Bandung', false);
+        $response->assertSee('Ahli K3 Listrik — Kota Bandung');
+        $response->assertSee('Teknisi K3 Listrik — Kota Bandung');
+        $response->assertSee('Kelistrikan Building — Kota Bandung', false);
 
         // Program cards link to city-scoped program detail pages
-        $response->assertSee(route('city.program.detail', ['city' => 'bandung', 'program' => 'training-ahli-k3-umum']), false);
-        $response->assertSee(route('city.program.detail', ['city' => 'bandung', 'program' => 'training-k3-konstruksi']), false);
-        $response->assertSee(route('city.program.detail', ['city' => 'bandung', 'program' => 'jasa-audit-smk3']), false);
+        $response->assertSee(route('city.program.detail', ['city' => 'bandung', 'program' => 'training-ahli-k3-listrik']), false);
+        $response->assertSee(route('city.program.detail', ['city' => 'bandung', 'program' => 'training-teknisi-k3-listrik']), false);
+        $response->assertSee(route('city.program.detail', ['city' => 'bandung', 'program' => 'training-kelistrikan-building']), false);
 
         // Footer still links to canonical program pages
-        $response->assertSee(route('program.show', 'training-ahli-k3-umum'), false);
-        $response->assertSee(route('program.show', 'training-k3-konstruksi'), false);
-        $response->assertSee(route('program.show', 'jasa-audit-smk3'), false);
+        $response->assertSee(route('program.show', 'training-ahli-k3-listrik'), false);
+        $response->assertSee(route('program.show', 'training-teknisi-k3-listrik'), false);
+        $response->assertSee(route('program.show', 'training-kelistrikan-building'), false);
 
         // WhatsApp CTA
         $response->assertSee('wa.me', false);
-        $response->assertSee(rawurlencode('Halo, saya dari Kota Bandung dan ingin konsultasi mengenai Training Ahli K3 Umum.'), false);
+        $response->assertSee(rawurlencode('Halo, saya dari Kota Bandung dan ingin konsultasi mengenai pelatihan K3 Listrik.'), false);
 
         // Disclaimer / No-invented-locations policy
         $response->assertSee('Catatan penting:', false);
@@ -183,21 +183,21 @@ class RegionalPagesTest extends TestCase
         $response->assertSee(route('regional.city', 'bandung'), false);
 
         // Programs with full titles personalized for district (district pages show program title only)
-        $response->assertSee('Training Ahli K3 Umum');
-        $response->assertSee('Training K3 Konstruksi');
-        $response->assertSee('Jasa Audit &amp; Penyusunan SMK3 (PP 50/2012)', false);
+        $response->assertSee('Training Ahli K3 Listrik');
+        $response->assertSee('Training Teknisi K3 Listrik');
+        $response->assertSee('Kelistrikan Building', false);
 
         // Programs link to city-scoped program detail
-        $response->assertSee(route('city.program.detail', ['city' => 'bandung', 'program' => 'training-ahli-k3-umum']), false);
-        $response->assertSee(route('city.program.detail', ['city' => 'bandung', 'program' => 'training-k3-konstruksi']), false);
-        $response->assertSee(route('city.program.detail', ['city' => 'bandung', 'program' => 'jasa-audit-smk3']), false);
+        $response->assertSee(route('city.program.detail', ['city' => 'bandung', 'program' => 'training-ahli-k3-listrik']), false);
+        $response->assertSee(route('city.program.detail', ['city' => 'bandung', 'program' => 'training-teknisi-k3-listrik']), false);
+        $response->assertSee(route('city.program.detail', ['city' => 'bandung', 'program' => 'training-kelistrikan-building']), false);
 
         // Sibling districts navigation
         $response->assertSee('Kecamatan Lain di Kota Bandung');
 
         // WhatsApp CTA
         $response->assertSee('wa.me', false);
-        $response->assertSee(rawurlencode('Halo, saya dari Kecamatan Coblong, Kota Bandung dan ingin konsultasi mengenai Training Ahli K3 Umum.'), false);
+        $response->assertSee(rawurlencode('Halo, saya dari Kecamatan Coblong, Kota Bandung dan ingin konsultasi mengenai pelatihan K3 Listrik.'), false);
 
         // District pages are thin content and MUST be tagged noindex
         $response->assertSee('<meta name="robots" content="noindex, follow">', false);
@@ -211,23 +211,23 @@ class RegionalPagesTest extends TestCase
         // 1. Province level (e.g. Jawa Timur)
         $provResponse = $this->get(route('regional.province', 'jawa-timur'));
         $provResponse->assertStatus(200);
-        $provResponse->assertSee('Training Ahli K3 Umum');
-        $provResponse->assertSee('Training K3 Konstruksi');
-        $provResponse->assertSee('Jasa Audit &amp; Penyusunan SMK3 (PP 50/2012)', false);
+        $provResponse->assertSee('Training Ahli K3 Listrik');
+        $provResponse->assertSee('Training Teknisi K3 Listrik');
+        $provResponse->assertSee('Kelistrikan Building', false);
 
         // 2. City level (e.g. Kota Malang)
         $cityResponse = $this->get(route('regional.city', 'malang'));
         $cityResponse->assertStatus(200);
-        $cityResponse->assertSee('Training Ahli K3 Umum — Kota Malang');
-        $cityResponse->assertSee('Training K3 Konstruksi — Kota Malang');
-        $cityResponse->assertSee('Jasa Audit &amp; Penyusunan SMK3 (PP 50/2012) — Kota Malang', false);
+        $cityResponse->assertSee('Ahli K3 Listrik — Kota Malang');
+        $cityResponse->assertSee('Teknisi K3 Listrik — Kota Malang');
+        $cityResponse->assertSee('Kelistrikan Building — Kota Malang', false);
 
         // 3. District level (e.g. Kecamatan Wagir, Kabupaten Malang)
         $distResponse = $this->get(route('regional.district', ['citySlug' => 'kab-malang', 'districtSlug' => 'wagir']));
         $distResponse->assertStatus(200);
-        $distResponse->assertSee('Training Ahli K3 Umum');
-        $distResponse->assertSee('Training K3 Konstruksi');
-        $distResponse->assertSee('Jasa Audit &amp; Penyusunan SMK3 (PP 50/2012)', false);
+        $distResponse->assertSee('Training Ahli K3 Listrik');
+        $distResponse->assertSee('Training Teknisi K3 Listrik');
+        $distResponse->assertSee('Kelistrikan Building', false);
     }
 
     /**

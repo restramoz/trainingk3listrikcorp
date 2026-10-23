@@ -61,15 +61,15 @@
                     </div>
                     <div>
                         <div class="text-xs font-semibold uppercase tracking-wider text-neutral-400">Sektor</div>
-                        <div class="text-lg sm:text-xl font-extrabold text-white mt-0.5">K3 Industri</div>
+                        <div class="text-lg sm:text-xl font-extrabold text-white mt-0.5">Kelistrikan</div>
                     </div>
                     <div>
-                        <div class="text-xs font-semibold uppercase tracking-wider text-neutral-400">Legalitas</div>
-                        <div class="text-lg sm:text-xl font-extrabold text-safety-orange mt-0.5">Permenaker RI</div>
+                        <div class="text-xs font-semibold uppercase tracking-wider text-neutral-400">Sifat Program</div>
+                        <div class="text-lg sm:text-xl font-extrabold text-safety-orange mt-0.5">Pembinaan</div>
                     </div>
                     <div>
-                        <div class="text-xs font-semibold uppercase tracking-wider text-neutral-400">Layanan</div>
-                        <div class="text-lg sm:text-xl font-extrabold text-white mt-0.5">Pembinaan</div>
+                        <div class="text-xs font-semibold uppercase tracking-wider text-neutral-400">Pelatihan</div>
+                        <div class="text-lg sm:text-xl font-extrabold text-white mt-0.5">K3 Listrik</div>
                     </div>
                 </div>
             </div>
@@ -101,8 +101,8 @@
                                 </svg>
                             </div>
                             <div class="text-sm text-dark-mahogany leading-relaxed">
-                                <span class="font-bold text-industry-black block mb-0.5">Kepatuhan Regulasi Nyata</span>
-                                Pendekatan materi dan layanan diarahkan pada pemenuhan standar keselamatan kerja nasional (UU No. 1/1970) dan kesiapan penerapan Sistem Manajemen K3 sesuai PP No. 50/2012.
+                                <span class="font-bold text-industry-black block mb-0.5">Catatan Kepatuhan</span>
+                                Program bersifat pembinaan kompetensi. Kewajiban regulasi keselamatan kerja di tempat kerja berlaku secara umum; rujukan regulasi spesifik dikonfirmasi kepada pihak yang berwenang tanpa ditegaskan di sini.
                             </div>
                         </div>
                     </div>

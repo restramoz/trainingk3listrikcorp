@@ -17,9 +17,9 @@ class HtmlSanitizerTest extends TestCase
 
     public function test_passes_clean_html_unchanged(): void
     {
-        $html = '<p>Konten artikel K3 Konstruksi yang aman.</p>';
+        $html = '<p>Konten artikel K3 Listrik yang aman.</p>';
         $result = $this->sanitizer->sanitize($html);
-        $this->assertStringContainsString('Konten artikel K3 Konstruksi yang aman.', $result);
+        $this->assertStringContainsString('Konten artikel K3 Listrik yang aman.', $result);
     }
 
     public function test_strips_script_tags(): void

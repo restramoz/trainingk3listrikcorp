@@ -12,11 +12,11 @@
                         </svg>
                     </div>
                     <span class="text-base font-bold text-white tracking-tight uppercase">
-                        Training <span class="text-safety-orange">Alat Berat</span>
+                        <span class="text-safety-orange">K3 Listrik</span>
                     </span>
                 </div>
                 <p class="text-sm text-neutral-300 leading-relaxed">
-                    Portal resmi informasi pembinaan dan sertifikasi SIO operator alat berat, kepatuhan K3 pesawat angkat &amp; angkut, serta konsultansi SMK3 PP 50/2012 untuk industri di seluruh Indonesia.
+                    Portal informasi program pelatihan K3 Listrik: pembinaan kompetensi keselamatan kerja kelistrikan untuk berbagai peran di industri, gedung, dan fasilitas.
                 </p>
                 <div class="pt-1">
                     <x-wa-cta variant="primary" size="sm" label="Konsultasi WhatsApp" class="bg-safety-orange hover:bg-burnt-brick text-industry-black hover:text-white font-bold" />
@@ -26,27 +26,27 @@
             <!-- Col 2: Program & Layanan -->
             <div class="space-y-4">
                 <h3 class="text-xs font-bold text-safety-orange uppercase tracking-wider">
-                    Program &amp; Layanan Utama
+                    Program Pelatihan Utama
                 </h3>
                 <ul class="space-y-2 text-xs sm:text-sm text-neutral-200" role="list">
                     <li>
-                        <a href="{{ route('program.show', 'training-ahli-k3-umum') }}" class="hover:text-safety-orange transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-safety-orange rounded">
-                            Training Operator &amp; Alat Berat
+                        <a href="{{ route('program.show', 'training-ahli-k3-listrik') }}" class="hover:text-safety-orange transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-safety-orange rounded">
+                            Training Ahli K3 Listrik
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('program.show', 'training-k3-konstruksi') }}" class="hover:text-safety-orange transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-safety-orange rounded">
-                            Training K3 Konstruksi &amp; Alat Berat
+                        <a href="{{ route('program.show', 'training-teknisi-k3-listrik') }}" class="hover:text-safety-orange transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-safety-orange rounded">
+                            Training Teknisi K3 Listrik
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('program.show', 'jasa-audit-smk3') }}" class="hover:text-safety-orange transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-safety-orange rounded">
-                            Jasa Audit &amp; Pendampingan SMK3
+                        <a href="{{ route('program.show', 'training-kelistrikan-building') }}" class="hover:text-safety-orange transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-safety-orange rounded">
+                            Training Kelistrikan Building
                         </a>
                     </li>
                     <li>
                         <a href="{{ route('articles.index') }}" class="hover:text-safety-orange transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-safety-orange rounded">
-                            Artikel &amp; Regulasi K3
+                            Artikel &amp; Panduan K3 Listrik
                         </a>
                     </li>
                 </ul>
@@ -56,10 +56,10 @@
         <!-- Bottom bar -->
         <div class="mt-12 pt-8 border-t border-dark-mahogany/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-400">
             <p>
-                &copy; {{ date('Y') }} Training Alat Berat. Seluruh hak cipta dilindungi.
+                &copy; {{ date('Y') }} Training K3 Listrik. Seluruh hak cipta dilindungi.
             </p>
             <p class="text-neutral-400">
-                Landasan regulasi: Permenaker No. 8/2020 &amp; PP No. 50/2012. Peta wilayah menampilkan konteks administratif jangkauan layanan.
+                Acuan materi dibahas secara umum; rujukan regulasi spesifik menunggu verifikasi. Peta wilayah menampilkan konteks administratif jangkauan layanan.
             </p>
         </div>
     </div>

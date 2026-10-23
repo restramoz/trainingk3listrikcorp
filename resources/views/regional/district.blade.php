@@ -3,8 +3,8 @@
 {{-- District pages are intentionally noindex: content is thin until meaningful local detail is available --}}
 @section('robots', 'noindex, follow')
 
-@section('title', 'Layanan K3 & Training Alat Berat — Kecamatan ' . $district['name'] . ', ' . $district['city_name'])
-@section('meta_description', 'Halaman referensi wilayah administratif Kecamatan ' . $district['name'] . ' di ' . $district['city_name'] . '. Konsultasi pembinaan kompetensi K3 dan jasa konsultansi SMK3 tersedia melalui WhatsApp.')
+@section('title', 'Pelatihan K3 Listrik — Kecamatan ' . $district['name'] . ', ' . $district['city_name'])
+@section('meta_description', 'Halaman referensi wilayah administratif Kecamatan ' . $district['name'] . ' di ' . $district['city_name'] . '. Konsultasi program pelatihan K3 Listrik tersedia melalui WhatsApp.')
 @section('wa_message', $waMessage)
 
 @section('content')
@@ -33,11 +33,11 @@
                     Halaman Referensi Wilayah
                 </div>
                 <h1 id="dist-hero-heading" class="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white leading-tight uppercase">
-                    Training Alat Berat &amp; K3 – <span class="text-safety-orange">Kec. {{ $district['name'] }}</span>
+                    Pelatihan K3 Listrik – <span class="text-safety-orange">Kec. {{ $district['name'] }}</span>
                 </h1>
                 <p class="mt-4 text-base text-neutral-200 leading-relaxed">
                     Halaman ini adalah halaman referensi wilayah untuk <strong class="text-white">Kecamatan {{ $district['name'] }}</strong>, <a href="{{ route('regional.city', $district['city_slug']) }}" class="text-safety-orange hover:underline font-semibold">{{ $district['city_name'] }}</a>, Provinsi {{ $district['province'] }}.
-                    Untuk konsultasi pembinaan kompetensi K3 atau penerapan SMK3, hubungi representasi resmi kami.
+                    Untuk konsultasi program pelatihan K3 Listrik, hubungi kami melalui WhatsApp.
                 </p>
                 <div class="mt-6">
                     <x-wa-cta variant="primary" size="md" :message="$waMessage" label="Konsultasi Layanan K3" class="bg-safety-orange hover:bg-burnt-brick text-industry-black hover:text-white font-bold" />
@@ -54,7 +54,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 <p class="text-sm text-dark-mahogany leading-relaxed">
-                    Halaman ini menyediakan informasi awal tingkat kecamatan. Penyelenggaraan pelatihan tatap muka, in-house training perusahaan, dan konsultansi penyusunan dokumen SMK3 dikonfirmasi langsung melalui representasi resmi kami.
+                    Halaman ini menyediakan informasi awal tingkat kecamatan. Penyelenggaraan pelatihan tatap muka dan in-house training dikonfirmasi langsung melalui konsultasi WhatsApp.
                 </p>
             </div>
         </div>
@@ -63,7 +63,7 @@
     {{-- Program Links --}}
     <section class="py-14 sm:py-20 bg-white border-b border-neutral-200" aria-labelledby="dist-program-heading">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 id="dist-program-heading" class="text-xl font-extrabold text-industry-black mb-8">Layanan Pembinaan K3 &amp; Alat Berat</h2>
+            <h2 id="dist-program-heading" class="text-xl font-extrabold text-industry-black mb-8">Program Pelatihan K3 Listrik</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 @foreach ($programs as $prog)
                 <a href="{{ route('city.program.detail', ['city' => $district['city_slug'], 'program' => $prog['slug']]) }}" class="group flex flex-col bg-white rounded-xl border border-neutral-200 hover:border-burnt-brick hover:shadow-md transition-all overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-burnt-brick">
@@ -113,7 +113,7 @@
             <h2 id="dist-article-heading" class="text-xl font-extrabold text-industry-black mb-2">
                 Artikel &amp; Panduan di Kecamatan {{ $district['name'] }}
             </h2>
-            <p class="text-sm text-dark-mahogany mb-8">Kumpulan artikel edukatif terkait keselamatan kerja &amp; SMK3 untuk wilayah {{ $district['city_name'] }}.</p>
+            <p class="text-sm text-dark-mahogany mb-8">Kumpulan artikel edukatif terkait keselamatan kerja kelistrikan untuk wilayah {{ $district['city_name'] }}.</p>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 @foreach($articles as $art)
                 <a href="{{ route('articles.show', $art->slug) }}" class="group flex flex-col bg-white rounded-xl border border-neutral-200 hover:border-burnt-brick hover:shadow-md transition-all overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-burnt-brick">
@@ -155,7 +155,7 @@
                     Konsultasi Layanan K3<br><span class="text-safety-orange">Kecamatan {{ $district['name'] }}</span>
                 </h2>
                 <p class="mt-4 text-sm text-neutral-200 leading-relaxed">
-                    Hubungi konsultan kami untuk informasi silabus resmi, pendaftaran batch pelatihan K3, atau konsultansi persiapan audit SMK3.
+                    Hubungi kami untuk informasi materi program, pendaftaran peserta, atau konsultasi kebutuhan pelatihan K3 Listrik.
                 </p>
                 <div class="mt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
                     <x-wa-cta variant="primary" size="lg" :message="$waMessage" label="Konsultasi Sekarang" class="bg-safety-orange hover:bg-burnt-brick text-industry-black hover:text-white font-bold shadow-lg" />

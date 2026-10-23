@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Training Alat Berat & Layanan K3 Provinsi ' . $province['name'] . ' — Konsultasi Resmi')
-@section('meta_description', 'Informasi draft Training Alat Berat untuk wilayah Provinsi ' . $province['name'] . '.')
+@section('title', 'Pelatihan K3 Listrik Provinsi ' . $province['name'] . ' — Konsultasi Resmi')
+@section('meta_description', 'Informasi program Pelatihan K3 Listrik untuk wilayah Provinsi ' . $province['name'] . '.')
 @section('wa_message', $waMessage)
 
 @section('content')
@@ -28,10 +28,10 @@
                     Layanan Informasi &amp; Pembinaan K3
                 </div>
                 <h1 id="prov-hero-heading" class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight uppercase">
-                    Training Alat Berat &amp; Layanan K3<br><span class="text-safety-orange">Provinsi {{ $province['name'] }}</span>
+                    Pelatihan K3 Listrik<br><span class="text-safety-orange">Provinsi {{ $province['name'] }}</span>
                 </h1>
                 <p class="mt-6 text-base sm:text-lg text-neutral-200 leading-relaxed">
-                    Pusat informasi konsultasi pembinaan kompetensi K3 dan jasa konsultansi penerapan SMK3 (PP 50/2012) untuk industri, fasilitas layanan, dan badan usaha di <strong class="text-white">Provinsi {{ $province['name'] }}</strong>.
+                    Pusat informasi program pelatihan keselamatan kerja kelistrikan untuk industri, fasilitas layanan, dan badan usaha di <strong class="text-white">Provinsi {{ $province['name'] }}</strong>.
                 </p>
                 <div class="mt-8 flex flex-col sm:flex-row gap-4">
                     <x-wa-cta variant="primary" size="lg" :message="$waMessage" label="Konsultasi Wilayah {{ $province['name'] }}" class="bg-safety-orange hover:bg-burnt-brick text-industry-black hover:text-white font-bold shadow-lg" />
@@ -119,11 +119,11 @@
                 @foreach([
                     [
                         'q' => 'Apakah pelatihan kompetensi K3 dan jasa konsultansi melayani wilayah Provinsi ' . $province['name'] . '?',
-                        'a' => 'Ya, kami melayani konsultasi dan pelaksanaan pelatihan publik daring, pelatihan tatap muka, serta in-house training dan konsultansi SMK3 untuk seluruh kota dan kabupaten di Provinsi ' . $province['name'] . '.',
+                        'a' => 'Ya, kami melayani konsultasi dan pelaksanaan program pelatihan K3 Listrik, termasuk skema penyelenggaraan dan in-house training, untuk seluruh kota dan kabupaten di Provinsi ' . $province['name'] . '.',
                     ],
                     [
                         'q' => 'Program apa saja yang tersedia untuk pemenuhan kepatuhan K3?',
-                        'a' => 'Tersedia program pembinaan kompetensi Alat Berat, K3 Konstruksi, K3 Kimia, K3 Kebakaran, Petugas P3K, serta jasa konsultansi audit SMK3, HIRADC, dan pengukuran lingkungan kerja.',
+                        'a' => 'Tersedia program pelatihan K3 Listrik dengan lingkup mulai peran operator, teknisi, inspektur, pengawas, hingga manajer, termasuk spesialisasi seperti tenaga surya, PLC, SCADA, dan pembumian. Detail program dikonfirmasi melalui WhatsApp.',
                     ],
                     [
                         'q' => 'Bagaimana cara mengajukan proposal in-house training K3 di ' . $province['name'] . '?',
@@ -149,10 +149,10 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div class="max-w-3xl mx-auto">
                 <h2 id="prov-cta-heading" class="text-2xl sm:text-3xl font-extrabold uppercase tracking-tight">
-                    Konsultasi Training Alat Berat<br><span class="text-safety-orange">Provinsi {{ $province['name'] }}</span>
+                    Konsultasi Pelatihan K3 Listrik<br><span class="text-safety-orange">Provinsi {{ $province['name'] }}</span>
                 </h2>
                 <p class="mt-4 text-base text-neutral-200 leading-relaxed">
-                    Hubungi konsultan kami untuk informasi silabus, pendaftaran batch pelatihan K3, atau penjadwalan in-house training dan audit SMK3.
+                    Hubungi kami untuk informasi materi, pendaftaran peserta, atau penjadwalan in-house training pelatihan K3 Listrik.
                 </p>
                 <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
                     <x-wa-cta variant="primary" size="lg" :message="$waMessage" label="Konsultasi Sekarang" class="bg-safety-orange hover:bg-burnt-brick text-industry-black hover:text-white font-bold shadow-lg" />

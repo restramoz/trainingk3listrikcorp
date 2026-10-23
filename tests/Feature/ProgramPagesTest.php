@@ -7,12 +7,12 @@ use Tests\TestCase;
 class ProgramPagesTest extends TestCase
 {
     /**
-     * Test that all 13 K3 Umum programs render successfully.
+     * Test that all 22 K3 Listrik programs render successfully.
      */
-    public function test_all_thirteen_services_render_successfully(): void
+    public function test_all_twenty_two_services_render_successfully(): void
     {
         $programs = config('programs', []);
-        $this->assertCount(13, $programs, 'There must be exactly 13 approved K3 Umum programs.');
+        $this->assertCount(22, $programs, 'There must be exactly 22 approved K3 Listrik programs.');
 
         foreach ($programs as $slug => $data) {
             $url = route('program.show', $slug);
@@ -29,13 +29,34 @@ class ProgramPagesTest extends TestCase
      */
     public function test_program_routes_have_expected_url_paths(): void
     {
-        $this->assertEquals('/layanan/training-ahli-k3-umum', parse_url(route('program.show', 'training-ahli-k3-umum'), PHP_URL_PATH));
-        $this->assertEquals('/program/training-ahli-k3-umum', parse_url(route('program.legacy.show', 'training-ahli-k3-umum'), PHP_URL_PATH));
+        $this->assertEquals('/layanan/training-ahli-k3-listrik', parse_url(route('program.show', 'training-ahli-k3-listrik'), PHP_URL_PATH));
+        $this->assertEquals('/program/training-ahli-k3-listrik', parse_url(route('program.legacy.show', 'training-ahli-k3-listrik'), PHP_URL_PATH));
 
         // Legacy route returns 200
-        $response = $this->get('/program/training-ahli-k3-umum');
+        $response = $this->get('/program/training-ahli-k3-listrik');
         $response->assertStatus(200);
-        $response->assertSee('Ahli K3 Umum');
+        $response->assertSee('Ahli K3 Listrik');
+    }
+
+    /**
+     * Test canonical and shorthand aliases on the canonical route.
+     */
+    public function test_short_alias_urls_resolve_to_canonical_program(): void
+    {
+        $aliases = [
+            'plc'         => 'Listrik PLC',
+            'non-plc'     => 'Listrik Non PLC',
+            'scada'       => 'Listrik SCADA',
+            'grounding'   => 'Instalasi Listrik Grounding',
+            'tenaga-surya'=> 'Listrik Tenaga Surya',
+            'otomasi'     => 'Otomasi Industri',
+        ];
+
+        foreach ($aliases as $alias => $expectedTitle) {
+            $response = $this->get('/layanan/' . $alias);
+            $response->assertStatus(200);
+            $response->assertSee($expectedTitle);
+        }
     }
 
     /**
@@ -43,24 +64,24 @@ class ProgramPagesTest extends TestCase
      */
     public function test_each_program_has_distinct_page_title_and_meta_description(): void
     {
-        $k3umum    = $this->get(route('program.show', 'training-ahli-k3-umum'));
-        $k3kimia   = $this->get(route('program.show', 'training-k3-kimia'));
-        $auditSmk3 = $this->get(route('program.show', 'jasa-audit-smk3'));
+        $ahliListrik  = $this->get(route('program.show', 'training-ahli-k3-listrik'));
+        $teknisiListrik = $this->get(route('program.show', 'training-teknisi-k3-listrik'));
+        $building     = $this->get(route('program.show', 'training-kelistrikan-building'));
 
-        $k3umum->assertStatus(200);
-        $k3kimia->assertStatus(200);
-        $auditSmk3->assertStatus(200);
+        $ahliListrik->assertStatus(200);
+        $teknisiListrik->assertStatus(200);
+        $building->assertStatus(200);
 
-        $k3umumConfig  = config('programs.training-ahli-k3-umum');
-        $k3kimiaConfig = config('programs.training-k3-kimia');
-        $auditConfig   = config('programs.jasa-audit-smk3');
+        $ahliConfig  = config('programs.training-ahli-k3-listrik');
+        $teknisiConfig = config('programs.training-teknisi-k3-listrik');
+        $buildingConfig = config('programs.training-kelistrikan-building');
 
-        $k3umum->assertSee($k3umumConfig['meta_title']);
-        $k3kimia->assertSee($k3kimiaConfig['meta_title']);
-        $auditSmk3->assertSee($auditConfig['meta_title']);
+        $ahliListrik->assertSee($ahliConfig['meta_title']);
+        $teknisiListrik->assertSee($teknisiConfig['meta_title']);
+        $building->assertSee($buildingConfig['meta_title']);
 
-        $this->assertNotEquals($k3umumConfig['meta_description'], $k3kimiaConfig['meta_description']);
-        $this->assertNotEquals($k3kimiaConfig['meta_description'], $auditConfig['meta_description']);
+        $this->assertNotEquals($ahliConfig['meta_description'], $teknisiConfig['meta_description']);
+        $this->assertNotEquals($teknisiConfig['meta_description'], $buildingConfig['meta_description']);
     }
 
     /**
@@ -68,7 +89,7 @@ class ProgramPagesTest extends TestCase
      */
     public function test_program_pages_include_accessible_breadcrumbs(): void
     {
-        $response = $this->get(route('program.show', 'training-ahli-k3-umum'));
+        $response = $this->get(route('program.show', 'training-ahli-k3-listrik'));
 
         $response->assertStatus(200);
         $response->assertSee('aria-label="Breadcrumb"', false);
@@ -83,7 +104,7 @@ class ProgramPagesTest extends TestCase
      */
     public function test_program_pages_display_transparent_unverified_info_notice(): void
     {
-        $response = $this->get(route('program.show', 'training-ahli-k3-umum'));
+        $response = $this->get(route('program.show', 'training-ahli-k3-listrik'));
 
         $response->assertStatus(200);
         $response->assertSee('Informasi Penyelenggaraan &amp; Pelaksanaan', false);
@@ -99,9 +120,9 @@ class ProgramPagesTest extends TestCase
     {
         config(['services.whatsapp.phone' => '089988776655']);
 
-        $response = $this->get(route('program.show', 'training-ahli-k3-umum'));
+        $response = $this->get(route('program.show', 'training-ahli-k3-listrik'));
         $response->assertStatus(200);
-        $expectedMsg = rawurlencode(config('programs.training-ahli-k3-umum.wa_message'));
+        $expectedMsg = rawurlencode(config('programs.training-ahli-k3-listrik.wa_message'));
         $response->assertSee('https://wa.me/6289988776655?text=' . $expectedMsg, false);
     }
 
@@ -112,10 +133,10 @@ class ProgramPagesTest extends TestCase
     {
         config(['services.whatsapp.phone' => '']);
 
-        $response = $this->get(route('program.show', 'training-ahli-k3-umum'));
+        $response = $this->get(route('program.show', 'training-ahli-k3-listrik'));
         $response->assertStatus(200);
 
-        $expectedText = rawurlencode(config('programs.training-ahli-k3-umum.wa_message'));
+        $expectedText = rawurlencode(config('programs.training-ahli-k3-listrik.wa_message'));
         $response->assertSee('https://wa.me/?text=' . $expectedText, false);
     }
 
@@ -124,9 +145,9 @@ class ProgramPagesTest extends TestCase
      */
     public function test_each_program_page_links_to_other_programs(): void
     {
-        $response = $this->get(route('program.show', 'training-ahli-k3-umum'));
+        $response = $this->get(route('program.show', 'training-ahli-k3-listrik'));
         $response->assertStatus(200);
-        $response->assertSee(route('program.show', 'training-k3-konstruksi'), false);
+        $response->assertSee(route('program.show', 'training-teknisi-k3-listrik'), false);
     }
 
     /**
@@ -134,7 +155,7 @@ class ProgramPagesTest extends TestCase
      */
     public function test_program_pages_have_responsive_faq_section(): void
     {
-        $response = $this->get(route('program.show', 'training-ahli-k3-umum'));
+        $response = $this->get(route('program.show', 'training-ahli-k3-listrik'));
 
         $response->assertStatus(200);
         $response->assertSee('<details', false);
@@ -143,11 +164,11 @@ class ProgramPagesTest extends TestCase
     }
 
     /**
-     * Test safety rule: no fabricated claims or non-K3 contamination.
+     * Test safety rule: no fabricated claims or B3 contamination.
      */
     public function test_program_pages_have_no_invented_claims(): void
     {
-        foreach (['training-ahli-k3-umum', 'training-k3-konstruksi', 'jasa-audit-smk3'] as $slug) {
+        foreach (['training-ahli-k3-listrik', 'training-listrik-plc', 'training-kelistrikan-building'] as $slug) {
             $response = $this->get(route('program.show', $slug));
             $response->assertStatus(200);
 
@@ -155,23 +176,26 @@ class ProgramPagesTest extends TestCase
             $response->assertDontSee('100% garansi lulus');
             $response->assertDontSee('pasti lulus');
             $response->assertDontSee('tanpa tes');
-            // No B3/environmental contamination on K3 Umum pages
+            // No B3/environmental contamination on K3 Listrik pages
             $response->assertDontSee('Pengelolaan Limbah B3');
             $response->assertDontSee('FESTRONIK');
             $response->assertDontSee('air limbah industri');
+            // No alat-berat/SIO house-of-cards claims
+            $response->assertDontSee('Sertifikasi SIO');
+            $response->assertDontSee('Permenaker No. 8/2020');
         }
     }
 
     /**
-     * Test homepage and footer link to K3 Umum programs.
+     * Test homepage and footer link to K3 Listrik programs.
      */
     public function test_homepage_and_footer_link_to_programs(): void
     {
         $home = $this->get(route('home'));
 
         $home->assertStatus(200);
-        $home->assertSee(route('program.show', 'training-ahli-k3-umum'), false);
-        $home->assertSee(route('program.show', 'training-k3-konstruksi'), false);
-        $home->assertSee(route('program.show', 'jasa-audit-smk3'), false);
+        $home->assertSee(route('program.show', 'training-ahli-k3-listrik'), false);
+        $home->assertSee(route('program.show', 'training-teknisi-k3-listrik'), false);
+        $home->assertSee(route('program.show', 'training-kelistrikan-building'), false);
     }
 }

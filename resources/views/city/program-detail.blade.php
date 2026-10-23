@@ -104,8 +104,8 @@
                                 </svg>
                             </div>
                             <div class="text-sm text-dark-mahogany leading-relaxed">
-                                <span class="font-bold text-industry-black block mb-0.5">Fokus Kepatuhan &amp; Keselamatan Kerja Nyata</span>
-                                Pendekatan layanan diarahkan pada identifikasi bahaya kerja, penerapan SMK3 sesuai PP No. 50/2012, mitigasi risiko insiden operasional, dan kepatuhan norma K3 di wilayah {{ $city['name'] }} dan sekitarnya.
+                                <span class="font-bold text-industry-black block mb-0.5">Fokus Keselamatan Kerja Kelistrikan</span>
+                                Program diarahkan pada identifikasi bahaya kerja listrik, pengendalian risiko, pemeliharaan aman, dan kebiasaan kerja yang aman di wilayah {{ $city['name'] }} dan sekitarnya.
                             </div>
                         </div>
                     </div>
@@ -286,10 +286,10 @@
                     Pilihan Layanan Lain
                 </span>
                 <h2 id="program-lain-heading" class="mt-3 text-2xl sm:text-3xl font-extrabold text-industry-black tracking-tight">
-                    Layanan Pengelolaan K3 &amp; Alat Berat Lainnya di {{ $city['name'] }}
+                    Program Pelatihan K3 Listrik Lainnya di {{ $city['name'] }}
                 </h2>
                 <p class="mt-4 text-base text-dark-mahogany">
-                    Bandingkan program sertifikasi dan jasa konsultansi K3 lainnya untuk menemukan layanan yang sesuai dengan kebutuhan kepatuhan industri Anda di {{ $city['name'] }}.
+                    Bandingkan program pelatihan kelistrikan lainnya untuk menemukan program yang sesuai dengan peran dan kebutuhan tim Anda di {{ $city['name'] }}.
                 </p>
             </div>
 

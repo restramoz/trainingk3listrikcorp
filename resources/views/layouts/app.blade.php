@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@hasSection('title')@yield('title') — @endif{{ config('app.name', 'Training Alat Berat') }}</title>
-    <meta name="description" content="@yield('meta_description', 'Portal resmi Training Alat Berat. Informasi sertifikasi SIO operator alat berat, pembinaan K3, dan jasa konsultansi SMK3 PP 50/2012.')">
+    <title>@hasSection('title')@yield('title') — @endif{{ config('app.name', 'Training K3 Listrik') }}</title>
+    <meta name="description" content="@yield('meta_description', 'Portal pelatihan K3 Listrik. Informasi pembinaan kompetensi keselamatan kerja kelistrikan dan layanan pendukung K3.')">
 
     <!-- Canonical URL -->
     <link rel="canonical" href="{{ url()->current() }}">
 
     <!-- Open Graph / Meta -->
-    <meta property="og:title" content="@hasSection('title')@yield('title') — @endif{{ config('app.name', 'Training Alat Berat') }}">
-    <meta property="og:description" content="@yield('meta_description', 'Layanan sertifikasi SIO operator alat berat, pembinaan kompetensi K3, dan jasa konsultansi Sistem Manajemen K3 (SMK3) di Indonesia.')">
+    <meta property="og:title" content="@hasSection('title')@yield('title') — @endif{{ config('app.name', 'Training K3 Listrik') }}">
+    <meta property="og:description" content="@yield('meta_description', 'Pembinaan kompetensi keselamatan kerja kelistrikan dan layanan pendukung K3 di Indonesia.')">
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url()->current() }}">
 

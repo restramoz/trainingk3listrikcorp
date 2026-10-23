@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Training Alat Berat di ' . $city['name'] . ' — Konsultasi Resmi K3')
-@section('meta_description', 'Layanan informasi pembinaan Training Alat Berat, sertifikasi K3, dan jasa konsultansi SMK3 PP 50/2012 untuk industri di ' . $city['name'] . ', Provinsi ' . $city['province'] . '.')
+@section('title', 'Pelatihan K3 Listrik di ' . $city['name'] . ' — Konsultasi Resmi K3')
+@section('meta_description', 'Informasi program pelatihan K3 Listrik dan pembinaan kompetensi keselamatan kerja untuk industri di ' . $city['name'] . ', Provinsi ' . $city['province'] . '.')
 @section('wa_message', $waMessage)
 
 @section('content')
@@ -29,10 +29,10 @@
                     Layanan Pembinaan &amp; Kepatuhan K3
                 </div>
                 <h1 id="city-hero-heading" class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight uppercase">
-                    Training Alat Berat<br><span class="text-safety-orange">{{ $city['name'] }}</span>
+                    Pelatihan K3 Listrik<br><span class="text-safety-orange">{{ $city['name'] }}</span>
                 </h1>
                 <p class="mt-6 text-base sm:text-lg text-neutral-200 leading-relaxed">
-                    Solusi komprehensif kepatuhan regulasi keselamatan dan kesehatan kerja, pembinaan kompetensi K3 personil industri, serta pendampingan penerapan Sistem Manajemen K3 (SMK3) bagi fasilitas usaha di <strong class="text-white">{{ $city['name'] }}</strong>, Provinsi {{ $city['province'] }}.
+                    Program pelatihan keselamatan kerja kelistrikan dan pembinaan kompetensi personil industri bagi fasilitas usaha di <strong class="text-white">{{ $city['name'] }}</strong>, Provinsi {{ $city['province'] }}.
                 </p>
                 <div class="mt-8 flex flex-col sm:flex-row gap-4">
                     <x-wa-cta variant="primary" size="lg" :message="$waMessage" label="Konsultasi Wilayah {{ $city['name'] }}" class="bg-safety-orange hover:bg-burnt-brick text-industry-black hover:text-white font-bold shadow-lg" />
@@ -119,7 +119,7 @@
             <h2 id="city-article-heading" class="text-2xl font-extrabold text-industry-black mb-2">
                 Artikel &amp; Panduan K3 di {{ $city['name'] }}
             </h2>
-            <p class="text-sm text-dark-mahogany mb-8">Kumpulan artikel edukatif dan regulasi terkait keselamatan kerja &amp; SMK3 untuk wilayah {{ $city['name'] }}.</p>
+            <p class="text-sm text-dark-mahogany mb-8">Kumpulan artikel edukatif terkait keselamatan kerja kelistrikan untuk wilayah {{ $city['name'] }}.</p>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 @foreach($articles as $art)
                 <a href="{{ route('articles.show', $art->slug) }}" class="group flex flex-col bg-white rounded-xl border border-neutral-200 hover:border-burnt-brick hover:shadow-md transition-all overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-burnt-brick">
@@ -185,11 +185,11 @@
                 @foreach([
                     [
                         'q' => 'Apakah layanan pembinaan K3 dan in-house training menjangkau ' . $city['name'] . '?',
-                        'a' => 'Ya, kami melayani calon peserta dan korporasi dari ' . $city['name'] . ' untuk seluruh skema pelatihan K3, pembinaan Alat Berat, serta jasa konsultansi penyusunan dokumen SMK3 dan identifikasi bahaya.',
+                        'a' => 'Ya, kami melayani calon peserta dan korporasi dari ' . $city['name'] . ' untuk berbagai program pelatihan K3 Listrik sesuai peran dan kebutuhan tim Anda.',
                     ],
                     [
                         'q' => 'Bagaimana cara menentukan skema pelatihan K3 yang tepat untuk instansi kami?',
-                        'a' => 'Kebutuhan pelatihan disesuaikan dengan profil risiko operasional perusahaan: Training Alat Berat untuk manajer/staf HSE, K3 Konstruksi untuk pengawas proyek bangunan, K3 Kimia untuk industri yang menggunakan B3, K3 Kebakaran untuk tim tanggap darurat, dan Petugas P3K. Tim konsultan kami siap membantu memverifikasi kebutuhan instansi Anda.',
+                        'a' => 'Kebutuhan pelatihan disesuaikan dengan peran dan profil risiko operasional perusahaan. Program pelatihan K3 Listrik tersedia untuk berbagai level, dari operator dan teknisi hingga supervisor dan manajer. Tim kami siap membantu mengarahkan program yang sesuai.',
                     ],
                     [
                         'q' => 'Bagaimana proses pengajuan penawaran in-house training K3 di ' . $city['name'] . '?',
@@ -215,10 +215,10 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div class="max-w-3xl mx-auto">
                 <h2 id="city-cta-heading" class="text-2xl sm:text-3xl font-extrabold uppercase tracking-tight">
-                    Konsultasi Training Alat Berat<br><span class="text-safety-orange">{{ $city['name'] }}</span>
+                    Konsultasi Pelatihan K3 Listrik<br><span class="text-safety-orange">{{ $city['name'] }}</span>
                 </h2>
                 <p class="mt-4 text-base text-neutral-200 leading-relaxed">
-                    Hubungi konsultan kami untuk informasi silabus resmi, penawaran harga in-house, jadwal batch pelatihan, atau pendampingan penerapan SMK3.
+                    Hubungi kami untuk informasi materi, penawaran in-house, jadwal peserta, atau rekomendasi program K3 Listrik.
                 </p>
                 <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
                     <x-wa-cta variant="primary" size="lg" :message="$waMessage" label="Konsultasi Sekarang" class="bg-safety-orange hover:bg-burnt-brick text-industry-black hover:text-white font-bold shadow-lg" />

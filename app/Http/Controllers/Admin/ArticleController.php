@@ -13,6 +13,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 use Illuminate\View\View;
 
 class ArticleController extends Controller
@@ -48,8 +49,9 @@ class ArticleController extends Controller
     public function create(RegionalService $regionalService): View
     {
         $cities = $regionalService->getAllCities();
+        $programs = config('programs', []);
 
-        return view('admin.articles.create', compact('cities'));
+        return view('admin.articles.create', compact('cities', 'programs'));
     }
 
     /**
@@ -301,6 +303,8 @@ class ArticleController extends Controller
             // Word-count limits: 6,000 - 9,000 words inclusive (default: 7,500)
             'word_count' => 'required|integer|min:6000|max:9000',
             'topic' => 'nullable|string|max:255',
+            // Optional service-aware generation: must reference a catalog entry.
+            'service_slug' => ['nullable', 'string', Rule::in(array_keys(config('programs', [])))],
         ]);
 
         $city = $regionalService->findCity($validated['city_slug']);
@@ -323,6 +327,7 @@ class ArticleController extends Controller
             'district_slug' => $district['slug'] ?? null,
             'word_count' => $validated['word_count'],
             'topic' => $validated['topic'] ?? null,
+            'service_slug' => $validated['service_slug'] ?? null,
         ];
 
         $result = $ollama->generateArticle($params);

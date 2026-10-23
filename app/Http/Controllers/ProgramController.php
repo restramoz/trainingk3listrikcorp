@@ -8,43 +8,21 @@ use Illuminate\Contracts\View\View;
 class ProgramController extends Controller
 {
     /**
-     * Map of legacy and SIO aliases to canonical program keys.
+     * Map of shorthand aliases to canonical program keys.
      */
     protected array $aliasMap = [
-        'ahli-k3-umum'              => 'training-ahli-k3-umum',
-        'k3-umum'                   => 'training-ahli-k3-umum',
-        'muda'                      => 'training-ahli-k3-umum',
-        'k3-konstruksi'             => 'training-k3-konstruksi',
-        'k3-konstruksi-muda'        => 'training-k3-konstruksi',
-        'k3-konstruksi-madya'       => 'training-k3-konstruksi',
-        'k3-konstruksi-utama'       => 'training-k3-konstruksi',
-        'madya'                     => 'training-k3-konstruksi',
-        'k3-kimia'                  => 'training-k3-kimia',
-        'k3-kebakaran'              => 'training-k3-kebakaran',
-        'p3k'                       => 'training-p3k-di-tempat-kerja',
-        'smk3'                      => 'jasa-audit-smk3',
-        'utama'                     => 'jasa-audit-smk3',
-        'hiradc'                    => 'jasa-identifikasi-bahaya-hiradc',
-
-        // 9 SIO Alat Berat aliases mapped to Construction & Equipment K3 program
-        'sio-excavator'             => 'training-k3-konstruksi',
-        'training-sio-excavator'    => 'training-k3-konstruksi',
-        'sio-wheel-loader'          => 'training-k3-konstruksi',
-        'training-sio-wheel-loader' => 'training-k3-konstruksi',
-        'sio-bulldozer'             => 'training-k3-konstruksi',
-        'training-sio-bulldozer'    => 'training-k3-konstruksi',
-        'sio-compactor'             => 'training-k3-konstruksi',
-        'training-sio-compactor'    => 'training-k3-konstruksi',
-        'sio-motor-grader'          => 'training-k3-konstruksi',
-        'training-sio-motor-grader' => 'training-k3-konstruksi',
-        'sio-rig-drilling'          => 'training-k3-konstruksi',
-        'training-sio-rig-drilling' => 'training-k3-konstruksi',
-        'sio-telehandler'           => 'training-k3-konstruksi',
-        'training-sio-telehandler'  => 'training-k3-konstruksi',
-        'sio-vibro'                 => 'training-k3-konstruksi',
-        'training-sio-vibro'        => 'training-k3-konstruksi',
-        'sio-dump-truck'            => 'training-k3-konstruksi',
-        'training-sio-dump-truck'   => 'training-k3-konstruksi',
+        'ahli-k3-listrik'   => 'training-ahli-k3-listrik',
+        'teknisi-k3-listrik'=> 'training-teknisi-k3-listrik',
+        'inspektur-listrik' => 'training-inspektur-listrik',
+        'pengawas-listrik'  => 'training-pengawas-listrik',
+        'supervisor-listrik'=> 'training-supervisor-listrik',
+        'manager-listrik'   => 'training-manager-listrik',
+        'plc'               => 'training-listrik-plc',
+        'non-plc'           => 'training-listrik-non-plc',
+        'scada'             => 'training-listrik-scada',
+        'grounding'         => 'training-instalasi-listrik-grounding',
+        'tenaga-surya'      => 'training-listrik-tenaga-surya',
+        'otomasi'           => 'training-otomasi-industri',
     ];
 
     /**

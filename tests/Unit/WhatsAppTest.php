@@ -63,7 +63,7 @@ class WhatsAppTest extends TestCase
 
     public function test_url_encodes_indonesian_text_and_special_punctuation(): void
     {
-        $message = "Halo, saya ingin tanya: jadwal & biaya K3 Konstruksi/batch baru?";
+        $message = "Halo, saya ingin tanya: jadwal & biaya pelatihan grup 1/2 K3 Listrik?";
         $url = WhatsApp::url($message, '081234567890');
 
         $expectedEncoded = rawurlencode($message);

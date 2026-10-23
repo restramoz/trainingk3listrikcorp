@@ -11,7 +11,7 @@ class HomepageDesignTest extends TestCase
         $response = $this->get('/');
 
         $response->assertStatus(200);
-        $response->assertSee('Training Ahli K3 Umum');
+        $response->assertSee('K3 Listrik');
     }
 
     public function test_homepage_includes_accessible_landmarks(): void
@@ -35,17 +35,15 @@ class HomepageDesignTest extends TestCase
         $response = $this->get('/');
 
         $response->assertStatus(200);
-        $response->assertSee('Training Ahli K3 Umum');
-        $response->assertSee('Training K3 Konstruksi');
-        $response->assertSee('Jasa Audit &amp; Penyusunan SMK3', false);
-        $response->assertSee('Jasa Identifikasi Bahaya &amp; HIRADC', false);
+        $response->assertSee('Training Ahli K3 Listrik');
+        $response->assertSee('Training Teknisi K3 Listrik');
+        $response->assertSee('Kelistrikan Building');
 
-        // Verify no stale B3 references on homepage
-        $response->assertDontSee('Training Limbah B3');
-        $response->assertDontSee('Training PPPA');
-        $response->assertDontSee('Training PLB3');
-        $response->assertDontSee('Jasa Uji Emisi Lingkungan');
-        $response->assertDontSee('Jasa UKL-UPL');
+        // Verify no stale SIO/alat-berat references on homepage
+        $response->assertDontSee('Sertifikasi SIO');
+        $response->assertDontSee('Surat Ijin Operator');
+        $response->assertDontSee('Permenaker');
+        $response->assertDontSee('Jasa Audit');
 
         // Verify no invented claims
         $response->assertDontSee('Jaminan Lulus 100%');

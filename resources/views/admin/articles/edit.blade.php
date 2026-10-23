@@ -340,7 +340,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     // 1. Inisialisasi Jodit Editor
     const editor = Jodit.make('#content_editor', {
-        placeholder: 'Tulis konten artikel edukasi Training Ahli K3 Umum di sini...',
+        placeholder: 'Tulis konten artikel edukasi pelatihan K3 Listrik di sini...',
         height: 480,
         toolbarAdaptive: false,
         uploader: {

@@ -68,7 +68,7 @@ class WhatsApp
     {
         return (string) config(
             'services.whatsapp.default_message',
-             'Halo, saya ingin konsultasi mengenai Training Alat Berat.'
+             'Halo, saya ingin konsultasi mengenai pelatihan K3 Listrik.'
         );
     }
 

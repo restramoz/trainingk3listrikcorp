@@ -42,7 +42,7 @@
                 AI
             </span>
             <h2 class="font-bold text-base text-navy-950">
-                Ollama AI Article Generator (Ahli K3 Umum &amp; K3)
+                Ollama AI Article Generator (Pelatihan K3 Listrik)
             </h2>
             <span class="text-[10px] px-2.5 py-0.5 rounded-full bg-navy-100 text-navy-900 font-bold border border-navy-300 ml-auto">
                 Lokal / Cloud
@@ -113,6 +113,20 @@
                     class="w-full px-3.5 py-2 text-xs rounded-lg border border-concrete-300 bg-concrete-50 focus:outline-none focus:ring-2 focus:ring-safety-500"
                 >
             </div>
+        </div>
+
+        <!-- Program Pelatihan Target (Opsional) -->
+        <div class="mt-4 space-y-2">
+            <label for="ai_service_slug" class="block text-xs font-bold text-navy-950 uppercase tracking-wider">
+                Program Pelatihan Target (Opsional)
+            </label>
+            <select id="ai_service_slug" class="w-full px-3.5 py-2 text-xs rounded-lg border border-concrete-300 bg-concrete-50 focus:outline-none focus:ring-2 focus:ring-safety-500">
+                <option value="">-- Umum (tanpa program spesifik) --</option>
+                @foreach($programs as $program)
+                    <option value="{{ $program['slug'] }}">{{ $program['title'] }}</option>
+                @endforeach
+            </select>
+            <p class="text-[10px] text-concrete-500">Bila dipilih, artikel akan terkonsentrasi pada lingkup program terkait.</p>
         </div>
 
         <div class="flex items-center justify-between pt-2">
@@ -419,7 +433,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     // 1. Inisialisasi Jodit Editor
     const editor = Jodit.make('#content_editor', {
-        placeholder: 'Tulis konten artikel edukasi Training Ahli K3 Umum di sini...',
+        placeholder: 'Tulis konten artikel edukasi pelatihan K3 Listrik di sini...',
         height: 480,
         toolbarAdaptive: false,
         uploader: {
@@ -749,7 +763,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 body: JSON.stringify({
                     city_slug: citySlug,
                     word_count: wordCount,
-                    topic: customTopic || null
+                    topic: customTopic || null,
+                    service_slug: document.getElementById('ai_service_slug')?.value || null
                 })
             });
 

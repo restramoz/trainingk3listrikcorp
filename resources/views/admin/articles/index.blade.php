@@ -11,7 +11,7 @@
                 Manajemen Artikel
             </h1>
             <p class="text-xs text-concrete-500">
-                Kelola artikel edukasi Pengelolaan Ahli K3 Umum &amp; K3
+                Kelola artikel edukasi pelatihan K3 Listrik
             </p>
         </div>
         <a href="{{ route('admin.articles.create') }}" class="px-4 py-2.5 rounded-lg bg-safety-500 hover:bg-safety-600 text-navy-950 font-bold text-xs shadow-sm inline-flex items-center gap-1.5 transition">

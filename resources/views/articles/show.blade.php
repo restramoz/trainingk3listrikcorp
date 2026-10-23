@@ -18,11 +18,11 @@
   @endif
   "author": {
     "@type": "Organization",
-    "name": "Tim Sertifikasi & Operator Alat Berat"
+    "name": "Tim Pelatihan K3 Listrik"
   },
   "publisher": {
     "@type": "Organization",
-    "name": "{{ config('app.name', 'Training Alat Berat') }}",
+    "name": "{{ config('app.name', 'Training K3 Listrik') }}",
     "url": "{{ url('/') }}"
   }
 }
@@ -80,7 +80,7 @@
         <header class="space-y-5 mb-8">
             <div class="flex items-center gap-2 flex-wrap">
                 <span class="px-3 py-1 rounded-full text-xs font-bold bg-neutral-100 text-burnt-brick border border-burnt-brick/20 uppercase tracking-wider">
-                    K3 &amp; Alat Berat
+                    K3 Listrik
                 </span>
                 @if($targetCity)
                     <a
@@ -101,7 +101,7 @@
                     Diterbitkan: <strong class="text-dark-mahogany">{{ ($article->published_at ?? $article->created_at)->format('d F Y') }}</strong>
                 </time>
                 <span aria-hidden="true">&bull;</span>
-                <span>Oleh: <strong class="text-dark-mahogany">Tim Sertifikasi Alat Berat</strong></span>
+                <span>Oleh: <strong class="text-dark-mahogany">Tim Pelatihan K3 Listrik</strong></span>
             </div>
 
             @if($article->excerpt)
@@ -217,13 +217,13 @@
         {{-- Consultation CTA --}}
         <div class="mt-12 p-6 sm:p-8 rounded-2xl bg-industry-black text-white space-y-4 shadow-lg border border-dark-mahogany">
             <span class="inline-block px-3 py-1 rounded-full bg-dark-mahogany text-safety-orange text-[11px] font-bold uppercase tracking-wider border border-burnt-brick/40">
-                Layanan Sertifikasi &amp; Training Alat Berat
+                Layanan Pelatihan K3 Listrik
             </span>
             <h3 class="font-extrabold text-xl sm:text-2xl text-white">
-                Konsultasikan Kepatuhan SIO &amp; Operasional Alat Berat Anda
+                Konsultasikan Kebutuhan Pelatihan Keselamatan Kelistrikan Anda
             </h3>
             <p class="text-sm text-neutral-200 leading-relaxed max-w-2xl">
-                Dapatkan informasi resmi mengenai jadwal batch sertifikasi SIO alat berat, silabus pelatihan K3, dan penawaran in-house training perusahaan.
+                Dapatkan informasi mengenai program pelatihan K3 Listrik, silabus, dan skema in-house training perusahaan melalui WhatsApp.
             </p>
             <div class="pt-2 flex flex-wrap gap-3">
                 <x-wa-cta variant="primary" size="md" label="Konsultasi Program Sekarang" class="bg-safety-orange hover:bg-burnt-brick text-industry-black hover:text-white font-bold shadow-md" />
@@ -232,6 +232,10 @@
                 </a>
             </div>
         </div>
+
+        {{-- Direct phone contacts — rendered at the Blade layer so they appear on every --}}
+        {{-- published article page, independent of how the article content was generated. --}}
+        <x-contact-numbers />
     </div>
 </article>
 
@@ -240,7 +244,7 @@
 <section class="py-12 bg-neutral-50 border-t border-neutral-200" aria-label="Artikel terkait">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 class="font-extrabold text-xl text-industry-black mb-6">
-            Artikel K3 &amp; Alat Berat Lainnya
+            Artikel K3 Listrik Lainnya
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             @foreach($relatedArticles as $rel)

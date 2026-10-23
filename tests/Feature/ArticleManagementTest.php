@@ -66,14 +66,14 @@ class ArticleManagementTest extends TestCase
     {
         $this->actingAsAdmin()
             ->post(route('admin.articles.store'), [
-                'title'   => 'Panduan K3 Konstruksi Muda',
-                'content' => '<p>Panduan pelatihan K3 Konstruksi Muda.</p>',
+                'title'   => 'Panduan K3 Listrik',
+                'content' => '<p>Panduan pelatihan K3 Listrik.</p>',
                 'status'  => 'draft',
             ])
             ->assertRedirect(route('admin.articles.index'));
 
         $this->assertDatabaseHas('articles', [
-            'title'  => 'Panduan K3 Konstruksi Muda',
+            'title'  => 'Panduan K3 Listrik',
             'status' => 'draft',
         ]);
     }
@@ -82,18 +82,18 @@ class ArticleManagementTest extends TestCase
     {
         $this->actingAsAdmin()
             ->post(route('admin.articles.store'), [
-                'title'   => 'Peraturan SMKK Terbaru',
-                'content' => '<p>Peraturan SMKK sesuai Permen PUPR 10/2021.</p>',
+                'title'   => 'Prosedur Kerja Aman Listrik',
+                'content' => '<p>Prosedur kerja aman instalasi listrik.</p>',
                 'status'  => 'published',
             ])
             ->assertRedirect(route('admin.articles.index'));
 
         $this->assertDatabaseHas('articles', [
-            'title'  => 'Peraturan SMKK Terbaru',
+            'title'  => 'Prosedur Kerja Aman Listrik',
             'status' => 'published',
         ]);
 
-        $article = Article::where('slug', 'peraturan-smkk-terbaru')->first();
+        $article = Article::where('slug', 'prosedur-kerja-aman-listrik')->first();
         $this->assertNotNull($article->published_at);
     }
 
@@ -112,14 +112,14 @@ class ArticleManagementTest extends TestCase
     {
         $this->actingAsAdmin()
             ->post(route('admin.articles.store'), [
-                'title'   => 'Rencana Keselamatan Konstruksi 2024',
+                'title'   => 'Rencana Keselamatan Listrik 2024',
                 'content' => '<p>Konten RKK.</p>',
                 'status'  => 'draft',
             ])
             ->assertRedirect();
 
         $this->assertDatabaseHas('articles', [
-            'slug' => 'rencana-keselamatan-konstruksi-2024',
+            'slug' => 'rencana-keselamatan-listrik-2024',
         ]);
     }
 

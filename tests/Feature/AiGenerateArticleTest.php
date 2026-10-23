@@ -63,11 +63,11 @@ class AiGenerateArticleTest extends TestCase
         $this->bindFakeRegional(['name' => 'Test City', 'slug' => 'some-city']);
         $this->bindFakeOllama([
             'success' => true,
-            'title' => 'Pengelolaan Limbah B3 di Test City',
-            'slug' => 'pengelolaan-limbah-b3-test-city',
+            'title' => 'Pelatihan K3 Listrik di Test City',
+            'slug' => 'pelatihan-k3-listrik-test-city',
             'excerpt' => 'Ringkasan singkat artikel.',
             'content' => '<p>Isi artikel.</p>',
-            'seo_title' => 'Pengelolaan Limbah B3 | Training Limbah B3',
+            'seo_title' => 'Pelatihan K3 Listrik | Training K3 Listrik',
             'meta_description' => 'Deskripsi meta artikel.',
             'suggested_faqs' => [],
             'image_brief' => ['concept' => 'Foto industri', 'english_prompt' => 'photo', 'aspect_ratio' => '16:9', 'recommended_alt' => 'alt'],

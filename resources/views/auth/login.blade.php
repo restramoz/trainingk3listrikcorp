@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Login Administrator — Training Alat Berat')
-@section('meta_description', 'Masuk ke panel manajemen administrator Training Alat Berat.')
+@section('title', 'Login Administrator — Training K3 Listrik')
+@section('meta_description', 'Masuk ke panel manajemen administrator Training K3 Listrik.')
 
 @section('content')
 <div class="min-h-[75vh] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-neutral-50">
@@ -18,7 +18,7 @@
                 Admin Panel Login
             </h1>
             <p class="text-xs text-dark-mahogany">
-                Akses terbatas untuk administrator Training Alat Berat
+                Akses terbatas untuk administrator Training K3 Listrik
             </p>
         </div>
 

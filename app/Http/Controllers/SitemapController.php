@@ -30,7 +30,7 @@ class SitemapController extends Controller
             'priority' => '0.8',
         ];
 
-        // 2. All 13 Services
+        // 2. All 22 Services
         $programs = config('programs', []);
         foreach ($programs as $slug => $item) {
             $urls[] = [

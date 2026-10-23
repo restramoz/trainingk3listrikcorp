@@ -19,10 +19,10 @@ class PublicArticleTest extends TestCase
     private function publishedArticle(array $overrides = []): Article
     {
         return Article::create(array_merge([
-            'title'        => 'Penerapan SMKK dalam Proyek Konstruksi',
-            'slug'         => 'penerapan-smkk-proyek-konstruksi',
-            'excerpt'      => 'Sistem Manajemen Keselamatan Konstruksi wajib diterapkan.',
-            'content'      => '<p>Konten artikel edukasi K3 Konstruksi.</p>',
+            'title'        => 'Pengendalian Bahaya Kerja Listrik di Tempat Kerja',
+            'slug'         => 'pengendalian-bahaya-kerja-listrik-tempat-kerja',
+            'excerpt'      => 'Pengendalian bahaya kerja listrik wajib diterapkan di setiap fasilitas.',
+            'content'      => '<p>Konten artikel edukasi keselamatan kerja kelistrikan.</p>',
             'status'       => 'published',
             'published_at' => now()->subDay(),
         ], $overrides));
@@ -69,8 +69,8 @@ class PublicArticleTest extends TestCase
     {
         $response = $this->get(route('articles.index'));
         $response->assertOk();
-        $response->assertSee(route('program.show', 'training-ahli-k3-umum'));
-        $response->assertSee(route('program.show', 'training-k3-konstruksi'));
+        $response->assertSee(route('program.show', 'training-ahli-k3-listrik'));
+        $response->assertSee(route('program.show', 'training-teknisi-k3-listrik'));
     }
 
     // ─── Show Tests ───────────────────────────────────────────────────────────
@@ -101,13 +101,13 @@ class PublicArticleTest extends TestCase
     public function test_article_show_contains_seo_metadata(): void
     {
         $article = $this->publishedArticle([
-            'seo_title'        => 'SEO Title K3 Konstruksi Khusus',
+            'seo_title'        => 'SEO Title K3 Listrik Khusus',
             'meta_description' => 'Deskripsi meta khusus artikel K3.',
         ]);
 
         $response = $this->get(route('articles.show', $article->slug));
         $response->assertOk();
-        $response->assertSee('SEO Title K3 Konstruksi Khusus');
+        $response->assertSee('SEO Title K3 Listrik Khusus');
         $response->assertSee('Deskripsi meta khusus artikel K3.');
     }
 
@@ -126,14 +126,14 @@ class PublicArticleTest extends TestCase
     {
         $article = $this->publishedArticle([
             'faqs' => [
-                ['q' => 'Apa itu K3 Konstruksi Muda?', 'a' => 'Sertifikasi tingkat dasar untuk pekerja konstruksi.'],
+                ['q' => 'Apa itu pelatihan K3 Listrik?', 'a' => 'Program pembinaan kompetensi keselamatan kerja untuk personel kelistrikan.'],
             ],
         ]);
 
         $response = $this->get(route('articles.show', $article->slug));
         $response->assertOk();
         $response->assertSee('Pertanyaan Umum');
-        $response->assertSee('Apa itu K3 Konstruksi Muda?');
+        $response->assertSee('Apa itu pelatihan K3 Listrik?');
     }
 
     public function test_article_show_does_not_leak_image_brief(): void
@@ -159,6 +159,50 @@ class PublicArticleTest extends TestCase
         $response = $this->get(route('articles.show', $article->slug));
         $response->assertOk();
         $response->assertSee('wa.me', false);
+    }
+
+    public function test_article_show_lists_contact_numbers_as_tel_links_right_after_cta(): void
+    {
+        $article = $this->publishedArticle([
+            'content' => '<p>Konten artikel edukasi keselamatan kerja kelistrikan.</p>'
+                // Simulate an Ollama-generated callout inside the body: wa.me links only.
+                . '<div class="my-6 p-4 rounded-xl bg-concrete-100 border border-teal-300 not-prose">'
+                . '<a href="https://wa.me/628118500177" target="_blank" rel="noopener noreferrer">Konsultasi WhatsApp</a>'
+                . '</div>',
+        ]);
+
+        $numbers = ['08118500177', '081399810272', '087894580806', '087894580649'];
+
+        $response = $this->get(route('articles.show', $article->slug));
+        $response->assertOk();
+
+        $html = $response->getContent();
+
+        $ctaPos = mb_strpos($html, 'Konsultasikan Kebutuhan Pelatihan');
+        $this->assertNotFalse($ctaPos, 'Consultation CTA should render on the article page.');
+
+        $previousPos = $ctaPos;
+        foreach ($numbers as $number) {
+            // Rendered as a clickable tel: link, preserving the leading zero exactly.
+            $telLink = 'tel:' . $number;
+            $this->assertStringContainsString($telLink, $html, "Contact number {$number} should render as a tel: link.");
+
+            $telPos = mb_strpos($html, $telLink);
+            $this->assertGreaterThan(
+                $previousPos,
+                $telPos,
+                "Contact number {$number} should appear immediately after the consultation CTA, in the listed order."
+            );
+
+            // Exactly one tel: link per number — no duplicated number displays.
+            $this->assertSame(
+                1,
+                substr_count($html, $telLink),
+                "Contact number {$number} should appear exactly once as a tel: link."
+            );
+
+            $previousPos = $telPos;
+        }
     }
 
     public function test_article_show_contains_article_schema(): void
