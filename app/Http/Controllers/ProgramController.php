@@ -8,21 +8,63 @@ use Illuminate\Contracts\View\View;
 class ProgramController extends Controller
 {
     /**
+     * Map of legacy and SIO aliases to canonical program keys.
+     */
+    protected array $aliasMap = [
+        'ahli-k3-umum'              => 'training-ahli-k3-umum',
+        'k3-umum'                   => 'training-ahli-k3-umum',
+        'muda'                      => 'training-ahli-k3-umum',
+        'k3-konstruksi'             => 'training-k3-konstruksi',
+        'k3-konstruksi-muda'        => 'training-k3-konstruksi',
+        'k3-konstruksi-madya'       => 'training-k3-konstruksi',
+        'k3-konstruksi-utama'       => 'training-k3-konstruksi',
+        'madya'                     => 'training-k3-konstruksi',
+        'k3-kimia'                  => 'training-k3-kimia',
+        'k3-kebakaran'              => 'training-k3-kebakaran',
+        'p3k'                       => 'training-p3k-di-tempat-kerja',
+        'smk3'                      => 'jasa-audit-smk3',
+        'utama'                     => 'jasa-audit-smk3',
+        'hiradc'                    => 'jasa-identifikasi-bahaya-hiradc',
+
+        // 9 SIO Alat Berat aliases mapped to Construction & Equipment K3 program
+        'sio-excavator'             => 'training-k3-konstruksi',
+        'training-sio-excavator'    => 'training-k3-konstruksi',
+        'sio-wheel-loader'          => 'training-k3-konstruksi',
+        'training-sio-wheel-loader' => 'training-k3-konstruksi',
+        'sio-bulldozer'             => 'training-k3-konstruksi',
+        'training-sio-bulldozer'    => 'training-k3-konstruksi',
+        'sio-compactor'             => 'training-k3-konstruksi',
+        'training-sio-compactor'    => 'training-k3-konstruksi',
+        'sio-motor-grader'          => 'training-k3-konstruksi',
+        'training-sio-motor-grader' => 'training-k3-konstruksi',
+        'sio-rig-drilling'          => 'training-k3-konstruksi',
+        'training-sio-rig-drilling' => 'training-k3-konstruksi',
+        'sio-telehandler'           => 'training-k3-konstruksi',
+        'training-sio-telehandler'  => 'training-k3-konstruksi',
+        'sio-vibro'                 => 'training-k3-konstruksi',
+        'training-sio-vibro'        => 'training-k3-konstruksi',
+        'sio-dump-truck'            => 'training-k3-konstruksi',
+        'training-sio-dump-truck'   => 'training-k3-konstruksi',
+    ];
+
+    /**
      * Display the specified program or service page by slug.
      */
     public function show(string $slug): View
     {
         $programs = config('programs', []);
 
-        if (! isset($programs[$slug])) {
+        $resolvedSlug = isset($programs[$slug]) ? $slug : ($this->aliasMap[$slug] ?? null);
+
+        if ($resolvedSlug === null || ! isset($programs[$resolvedSlug])) {
             abort(404, 'Layanan atau program pelatihan tidak ditemukan.');
         }
 
-        $program = $programs[$slug];
+        $program = $programs[$resolvedSlug];
 
         // Recommend related programs in the same category or overall
         $relatedPrograms = collect($programs)
-            ->filter(fn (array $p, string $key): bool => $key !== $slug)
+            ->filter(fn (array $p, string $key): bool => $key !== $resolvedSlug)
             ->values()
             ->take(6)
             ->all();
@@ -48,28 +90,7 @@ class ProgramController extends Controller
         $programs = config('programs', []);
 
         // Direct key lookup
-        $configKey = isset($programs[$program]) ? $program : null;
-
-        // Fallback mapping for regional program aliases
-        if ($configKey === null) {
-            $aliasMap = [
-                'ahli-k3-umum'        => 'training-ahli-k3-umum',
-                'k3-umum'             => 'training-ahli-k3-umum',
-                'muda'                => 'training-ahli-k3-umum',
-                'k3-konstruksi'       => 'training-k3-konstruksi',
-                'k3-konstruksi-muda'  => 'training-k3-konstruksi',
-                'k3-konstruksi-madya' => 'training-k3-konstruksi',
-                'k3-konstruksi-utama' => 'training-k3-konstruksi',
-                'madya'               => 'training-k3-konstruksi',
-                'k3-kimia'            => 'training-k3-kimia',
-                'k3-kebakaran'        => 'training-k3-kebakaran',
-                'p3k'                 => 'training-p3k-di-tempat-kerja',
-                'smk3'                => 'jasa-audit-smk3',
-                'utama'               => 'jasa-audit-smk3',
-                'hiradc'              => 'jasa-identifikasi-bahaya-hiradc',
-            ];
-            $configKey = $aliasMap[$program] ?? null;
-        }
+        $configKey = isset($programs[$program]) ? $program : ($this->aliasMap[$program] ?? null);
 
         abort_if($configKey === null || ! isset($programs[$configKey]), 404, 'Layanan tidak ditemukan.');
         $programData = $programs[$configKey];

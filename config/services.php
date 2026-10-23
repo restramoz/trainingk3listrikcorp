@@ -37,7 +37,7 @@ return [
 
     'whatsapp' => [
         'phone' => env('WHATSAPP_PHONE', ''),
-        'default_message' => env('WHATSAPP_DEFAULT_MESSAGE', 'Halo, saya ingin konsultasi mengenai Training Ahli K3 Umum.'),
+        'default_message' => env('WHATSAPP_DEFAULT_MESSAGE', 'Halo, saya ingin konsultasi mengenai Training Alat Berat.'),
         // Public business numbers for article callouts.
         'callout_contacts' => [
             '08118500177',

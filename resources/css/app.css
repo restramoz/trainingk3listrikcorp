@@ -7,94 +7,57 @@
 @theme {
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
-    /* ── K3 Design System (Updated Palette) ────────────────────────────────── */
+    /* STRICT FOUR-COLOR APPROVED PALETTE — KEEP EXACTLY */
+    --color-industry-black: #0C0C0C;
+    --color-dark-mahogany: #481E14;
+    --color-burnt-brick: #9B3922;
+    --color-safety-orange: #F2613F;
 
-    /* Primary — Deep Teal: #09637E */
-    --color-primary: #09637e;
-    --color-primary-dark: #063d4e;
-    --color-primary-darker: #042a37;
-    --color-primary-light: #0a7597;
-    --color-primary-lighter: #0b8db3;
+    /* Semantic tokens */
+    --color-primary: #F2613F;
+    --color-primary-dark: #9B3922;
+    --color-secondary: #481E14;
+    --color-accent: #9B3922;
 
-    /* Secondary — Ocean Teal: #088395 */
-    --color-secondary: #088395;
-    --color-secondary-dark: #065d6b;
-    --color-secondary-light: #0a9bb0;
-    --color-secondary-lighter: #2aa5b8;
+    /* Backward-compatible scales mapped safely to approved design tokens */
+    --color-navy-950: #0C0C0C;
+    --color-navy-900: #141414;
+    --color-navy-800: #481E14;
+    --color-navy-700: #481E14;
 
-    /* Supporting — Muted Aqua: #7AB2B2 */
-    --color-muted: #7ab2b2;
-    --color-muted-light: #a8d0d0;
-    --color-muted-dark: #5a9494;
+    --color-slate-950: #0C0C0C;
+    --color-slate-900: #0C0C0C;
+    --color-slate-800: #1C1917;
+    --color-slate-700: #481E14;
+    --color-slate-600: #481E14;
+    --color-slate-500: #6B443B;
 
-    /* Background — Ice White: #EBF4F6 */
-    --color-background: #ebf4f6;
-    --color-background-white: #ffffff;
+    --color-concrete-50: #FAF9F6;
+    --color-concrete-100: #F3F1ED;
+    --color-concrete-200: #E5E1DA;
+    --color-concrete-300: #D1CBC1;
+    --color-concrete-400: #9CA3AF;
+    --color-concrete-500: #6B7280;
+    --color-concrete-600: #481E14;
+    --color-concrete-700: #481E14;
+    --color-concrete-800: #0C0C0C;
 
-    /* Text Colors */
-    --color-text-primary: #09637e;      /* Deep teal for headings */
-    --color-text-secondary: #088395;    /* Ocean teal for links/accents */
-    --color-text-body: #1a3a43;         /* Dark teal-gray for body */
-    --color-text-muted: #5a7d80;        /* Muted for secondary text */
-    --color-text-on-primary: #ffffff;   /* White on primary backgrounds */
-    --color-text-on-secondary: #ffffff; /* White on secondary backgrounds */
+    --color-teal-700: #481E14;
+    --color-teal-600: #9B3922;
+    --color-teal-500: #9B3922;
+    --color-teal-400: #F2613F;
+    --color-teal-soft: #FAF9F6;
 
-    /* Legacy token mappings (for backward compatibility with existing classes) */
-    /* Navy scale → Primary Deep Teal */
-    --color-navy-950: #09637e;
-    --color-navy-900: #09637e;
-    --color-navy-800: #088395;
-    --color-navy-700: #0a7597;
+    --color-orange-400: #F2613F;
+    --color-orange-500: #F2613F;
+    --color-orange-600: #9B3922;
+    --color-orange-soft: #FFF3EF;
 
-    /* Slate scale → Text colors */
-    --color-slate-900: #1a3a43;   /* Body text */
-    --color-slate-700: #3a6b73;   /* Secondary text */
-    --color-slate-500: #5a7d80;   /* Muted text */
-
-    /* Concrete scale → Background/Border */
-    --color-concrete-50: #ebf4f6;   /* Page background */
-    --color-concrete-100: #ebf4f6;  /* Section background */
-    --color-concrete-200: #7ab2b2;  /* Borders, dividers */
-    --color-concrete-300: #a8d0d0;  /* Lighter borders */
-    --color-concrete-500: #5a7d80;  /* Disabled/placeholder text */
-    --color-concrete-600: #3a6b73;  /* Darker muted text */
-    --color-concrete-700: #1a3a43;  /* Dark text */
-    --color-concrete-800: #0c2d34;  /* Very dark text */
-
-    /* Teal scale → Primary/Secondary */
-    --color-teal-700: #09637e;      /* Primary */
-    --color-teal-600: #088395;      /* Secondary */
-    --color-teal-500: #0a7597;      /* Lighter secondary */
-    --color-teal-400: #2aa5b8;      /* Accent */
-    --color-teal-soft: #ebf4f6;     /* Soft background */
-
-    /* Surface / White */
-    --color-surface: #ffffff;
-
-    /* WhatsApp (kept for WhatsApp-specific elements) */
-    --color-wa-500: #25d366;
-    --color-wa-600: #20bd5a;
-    --color-wa-700: #1db855;
-
-    /* Safety Yellow (kept for notices only) */
-    --color-safety-400: #eab308;
-    --color-safety-500: #f59e0b;
-    --color-safety-soft: #fef3c7;
-
-    /* Legacy emerald aliases (mapped to new palette) */
-    --color-emerald-400: #2aa5b8;
-    --color-emerald-500: #0a7597;
-    --color-emerald-600: #088395;
-    --color-emerald-700: #09637e;
-    --color-emerald-soft: #ebf4f6;
-    --color-emerald-100: #c4edf5;
-    --color-emerald-300: #56c1d1;
-
-    /* Orange (kept for backward compat — used in some inline overrides) */
-    --color-orange-500: #f28c28;
-    --color-orange-600: #d97a1a;
-    --color-orange-400: #f5a04a;
-    --color-orange-soft: #fef3e5;
+    --color-emerald-400: #F2613F;
+    --color-emerald-500: #9B3922;
+    --color-emerald-600: #9B3922;
+    --color-emerald-700: #481E14;
+    --color-emerald-soft: #FAF9F6;
 }
 
 @layer base {
@@ -115,7 +78,23 @@
     }
 
     body {
-        color: #1a3a43;
-        background-color: #ebf4f6;
+        color: #481E14;
+        background-color: #FFFFFF;
     }
 }
+
+/* Custom utility classes */
+.bg-industry-black { background-color: #0C0C0C; }
+.bg-dark-mahogany { background-color: #481E14; }
+.bg-burnt-brick { background-color: #9B3922; }
+.bg-safety-orange { background-color: #F2613F; }
+
+.text-industry-black { color: #0C0C0C; }
+.text-dark-mahogany { color: #481E14; }
+.text-burnt-brick { color: #9B3922; }
+.text-safety-orange { color: #F2613F; }
+
+.border-industry-black { border-color: #0C0C0C; }
+.border-dark-mahogany { border-color: #481E14; }
+.border-burnt-brick { border-color: #9B3922; }
+.border-safety-orange { border-color: #F2613F; }

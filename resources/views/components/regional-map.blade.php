@@ -42,28 +42,28 @@
     $mapsLinkUrl = 'https://www.google.com/maps/search/?api=1&query=' . urlencode($mapsQuery);
 @endphp
 
-<section class="py-12 bg-white border-b border-concrete-200" aria-labelledby="{{ $mapId }}-heading">
+<section class="py-12 bg-dark-mahogany border-b border-dark-mahogany" aria-labelledby="{{ $mapId }}-heading">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="max-w-3xl mb-6">
-            <span class="text-xs font-bold uppercase tracking-wider text-teal-700 bg-teal-soft px-3 py-1 rounded-full border border-teal-500/20">
+            <span class="text-xs font-bold uppercase tracking-wider text-burnt-brick bg-dark-mahogany px-3 py-1 rounded-full border border-burnt-brick/20">
                 Peta Wilayah
             </span>
-            <h2 id="{{ $mapId }}-heading" class="text-xl sm:text-2xl font-extrabold text-navy-950 mt-2">
+            <h2 id="{{ $mapId }}-heading" class="text-xl sm:text-2xl font-extrabold text-burnt-brick mt-2">
                 Konteks Administratif {{ $displayName }}
             </h2>
-            <p class="text-sm text-slate-700 mt-2 leading-relaxed">
-                Peta menampilkan konteks administratif <strong class="text-navy-900">{{ $displayName }}</strong>.
+            <p class="text-sm text-safety-orange mt-2 leading-relaxed">
+                Peta menampilkan konteks administratif <strong class="text-burnt-brick">{{ $displayName }}</strong>.
                 @if ($level === 'district')
-                    Kecamatan <strong class="text-navy-900">{{ $resolvedName }}</strong>, {{ $queryParts[1] ?? '' }}, {{ $queryParts[2] ?? '' }}.
+                    Kecamatan <strong class="text-burnt-brick">{{ $resolvedName }}</strong>, {{ $queryParts[1] ?? '' }}, {{ $queryParts[2] ?? '' }}.
                 @elseif ($level === 'city')
                     {{ $resolvedName }}, {{ $queryParts[1] ?? '' }}.
                 @endif
-                Titik pada peta menunjukkan pusat administratif wilayah dan <strong class="text-navy-900">bukan lokasi kantor atau tempat pelaksanaan training K3 terkonfirmasi</strong>.
+                Titik pada peta menunjukkan pusat administratif wilayah dan <strong class="text-burnt-brick">bukan lokasi kantor atau tempat pelaksanaan training K3 terkonfirmasi</strong>.
             </p>
         </div>
 
         @if ($resolvedName)
-            <div class="relative rounded-2xl overflow-hidden border border-concrete-200 shadow-sm bg-concrete-50">
+            <div class="relative rounded-2xl overflow-hidden border border-dark-mahogany shadow-sm bg-dark-mahogany">
                 <div class="aspect-video w-full">
                     <iframe
                         id="{{ $mapId }}"
@@ -79,13 +79,13 @@
                 </div>
             </div>
 
-            <div class="mt-3 flex flex-wrap items-center justify-between gap-2 text-xs text-slate-500">
+            <div class="mt-3 flex flex-wrap items-center justify-between gap-2 text-xs text-safety-orange">
                 <span>Query: {{ $mapsQuery }}</span>
                 <a
                     href="{{ $mapsLinkUrl }}"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="inline-flex items-center gap-1.5 text-teal-700 hover:text-teal-600 font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 rounded"
+                    class="inline-flex items-center gap-1.5 text-burnt-brick hover:text-burnt-brick font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-burnt-brick rounded"
                     aria-label="Buka {{ $mapsQuery }} di Google Maps di tab baru"
                 >
                     <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -95,14 +95,14 @@
                 </a>
             </div>
         @else
-            <div class="rounded-2xl border border-concrete-300 bg-concrete-50 p-6 text-sm text-slate-700" role="status">
+            <div class="rounded-2xl border border-dark-mahogany bg-dark-mahogany p-6 text-sm text-safety-orange" role="status">
                 <div class="flex items-start gap-3">
-                    <svg class="w-5 h-5 text-teal-700 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg class="w-5 h-5 text-burnt-brick shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                     </svg>
                     <div>
-                        <p class="font-bold text-navy-950">Data Wilayah Tidak Ditemukan</p>
-                        <p class="mt-1 text-slate-600">
+                        <p class="font-bold text-burnt-brick">Data Wilayah Tidak Ditemukan</p>
+                        <p class="mt-1 text-safety-orange">
                             Tidak dapat memetakan {{ $regionName ?? 'wilayah ini' }} ke data administratif BPS.
                             Pelaksanaan pelatihan tetap dapat dikoordinasikan melalui konsultasi resmi WhatsApp.
                         </p>

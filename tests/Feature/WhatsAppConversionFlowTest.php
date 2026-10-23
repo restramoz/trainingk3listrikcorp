@@ -62,13 +62,13 @@ class WhatsAppConversionFlowTest extends TestCase
         $response = $this->get('/');
         $response->assertStatus(200);
 
-        $mudaMessage = rawurlencode('Halo, saya ingin konsultasi mengenai jadwal, biaya, dan persyaratan Training PPPA (Penanggung Jawab Pengendalian Pencemaran Air).');
-        $madyaMessage = rawurlencode('Halo, saya ingin konsultasi mengenai jadwal, biaya, dan materi Training Operasional IPAL.');
-        $utamaMessage = rawurlencode('Halo, saya ingin konsultasi mengenai jadwal dan syarat pendaftaran Training Sertifikasi PLB3 (Penanggung Jawab Pengelolaan Limbah B3).');
+        $k3UmumMsg = rawurlencode(config('programs.training-ahli-k3-umum.wa_message'));
+        $k3KonstruksiMsg = rawurlencode(config('programs.training-k3-konstruksi.wa_message'));
+        $auditSmk3Msg = rawurlencode(config('programs.jasa-audit-smk3.wa_message'));
 
-        $response->assertSee('https://wa.me/6281299887766?text=' . $mudaMessage, false);
-        $response->assertSee('https://wa.me/6281299887766?text=' . $madyaMessage, false);
-        $response->assertSee('https://wa.me/6281299887766?text=' . $utamaMessage, false);
+        $response->assertSee('https://wa.me/6281299887766?text=' . $k3UmumMsg, false);
+        $response->assertSee('https://wa.me/6281299887766?text=' . $k3KonstruksiMsg, false);
+        $response->assertSee('https://wa.me/6281299887766?text=' . $auditSmk3Msg, false);
     }
 
     public function test_program_pages_produce_contextual_messages_across_all_page_ctas(): void
@@ -78,18 +78,18 @@ class WhatsAppConversionFlowTest extends TestCase
         $programs = [
             [
                 'route' => 'program.show',
-                'slug' => 'training-plb3',
-                'message' => 'Halo, saya ingin konsultasi mengenai jadwal dan syarat pendaftaran Training Sertifikasi PLB3 (Penanggung Jawab Pengelolaan Limbah B3).'
+                'slug' => 'training-ahli-k3-umum',
+                'message' => config('programs.training-ahli-k3-umum.wa_message'),
             ],
             [
                 'route' => 'program.show',
-                'slug' => 'training-pppa',
-                'message' => 'Halo, saya ingin konsultasi mengenai jadwal, biaya, dan persyaratan Training PPPA (Penanggung Jawab Pengendalian Pencemaran Air).'
+                'slug' => 'training-k3-konstruksi',
+                'message' => config('programs.training-k3-konstruksi.wa_message'),
             ],
             [
                 'route' => 'program.show',
-                'slug' => 'training-ipal',
-                'message' => 'Halo, saya ingin konsultasi mengenai jadwal, biaya, dan materi Training Operasional IPAL.'
+                'slug' => 'jasa-audit-smk3',
+                'message' => config('programs.jasa-audit-smk3.wa_message'),
             ],
         ];
 
@@ -141,7 +141,7 @@ class WhatsAppConversionFlowTest extends TestCase
 
     public function test_no_real_contact_numbers_or_secrets_are_exposed(): void
     {
-        $pages = ['/', route('program.show', 'training-plb3'), route('program.show', 'training-pppa'), route('program.show', 'training-ipal')];
+        $pages = ['/', route('program.show', 'training-ahli-k3-umum'), route('program.show', 'training-k3-konstruksi'), route('program.show', 'jasa-audit-smk3')];
 
         foreach ($pages as $url) {
             $response = $this->get($url);

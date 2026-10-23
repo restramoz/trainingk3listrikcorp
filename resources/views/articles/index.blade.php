@@ -1,37 +1,37 @@
 @extends('layouts.app')
 
-@section('title', 'Artikel & Panduan Training Ahli K3 Umum')
-@section('meta_description', 'Kumpulan artikel draft seputar Training Ahli K3 Umum.')
+@section('title', 'Artikel & Panduan Training Alat Berat')
+@section('meta_description', 'Kumpulan artikel edukatif, panduan teknis, dan regulasi seputar Training Alat Berat, sertifikasi SIO, dan Sistem Manajemen K3.')
 
 @section('content')
 {{-- Hero Section --}}
-<section class="py-14 lg:py-20 bg-gradient-to-b from-navy-950 to-navy-900 border-b border-navy-800">
+<section class="py-14 lg:py-20 bg-industry-black text-white border-b border-dark-mahogany">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="max-w-3xl space-y-5">
-            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/30 text-teal-400 text-xs font-bold uppercase tracking-wider">
+            <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-burnt-brick border border-burnt-brick/80 text-white text-xs font-bold uppercase tracking-wider shadow-sm">
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
                 Edukasi &amp; Literasi Regulasi K3
             </span>
             <h1 class="font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight">
                 Artikel &amp; Panduan
-                <span class="text-orange-400">Keselamatan Kerja &amp; SMK3</span>
+                <span class="text-safety-orange">Keselamatan Kerja &amp; Alat Berat</span>
             </h1>
-            <p class="text-base text-concrete-300 leading-relaxed max-w-2xl">
-                Informasi otoritatif mengenai regulasi K3 nasional (UU No. 1/1970), implementasi Sistem Manajemen K3 (PP No. 50/2012), identifikasi bahaya, dan pembinaan kompetensi Ahli K3 Umum.
+            <p class="text-base text-neutral-200 leading-relaxed max-w-2xl">
+                Informasi otoritatif mengenai regulasi K3 nasional (Permenaker No. 8/2020 &amp; UU No. 1/1970), implementasi Sistem Manajemen K3 (PP No. 50/2012), identifikasi bahaya, dan sertifikasi SIO operator alat berat.
             </p>
         </div>
     </div>
 </section>
 
 {{-- Articles Grid Section --}}
-<section class="py-14 bg-concrete-50" aria-label="Daftar artikel K3 dan Ahli K3 Umum">
+<section class="py-14 bg-neutral-50" aria-label="Daftar artikel K3 dan Alat Berat">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             @forelse($articles as $article)
-                <article class="bg-white rounded-2xl border border-concrete-200 shadow-sm overflow-hidden flex flex-col hover:shadow-md hover:border-emerald-500 transition-all duration-200">
+                <article class="bg-white rounded-2xl border border-neutral-200 shadow-sm overflow-hidden flex flex-col hover:shadow-md hover:border-burnt-brick transition-all duration-200">
                     <div class="flex-grow">
                         @if($article->featured_image)
-                            <a href="{{ route('articles.show', $article->slug) }}" class="block h-48 overflow-hidden bg-concrete-100" tabindex="-1" aria-hidden="true">
+                            <a href="{{ route('articles.show', $article->slug) }}" class="block h-48 overflow-hidden bg-neutral-100" tabindex="-1" aria-hidden="true">
                                 <img
                                     src="/{{ ltrim($article->featured_image, '/') }}"
                                     alt="{{ $article->title }}"
@@ -41,39 +41,39 @@
                                 >
                             </a>
                         @else
-                            <div class="h-32 bg-gradient-to-br from-navy-900 to-navy-950 flex items-center justify-center" aria-hidden="true">
-                                <svg class="w-10 h-10 text-emerald-500/30" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z"/></svg>
+                            <div class="h-32 bg-gradient-to-br from-neutral-100 to-neutral-200 flex items-center justify-center" aria-hidden="true">
+                                <svg class="w-10 h-10 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z"/></svg>
                             </div>
                         @endif
 
                         <div class="p-6 space-y-3">
-                            <div class="flex items-center justify-between text-[11px] text-concrete-400">
+                            <div class="flex items-center justify-between text-[11px] text-neutral-500">
                                 <time datetime="{{ ($article->published_at ?? $article->created_at)->toDateString() }}">
                                     {{ ($article->published_at ?? $article->created_at)->format('d M Y') }}
                                 </time>
                                 @if($article->target_city_slug)
-                                    <span class="px-2 py-0.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 font-bold">
+                                    <span class="px-2 py-0.5 rounded-full bg-neutral-100 border border-neutral-200 text-dark-mahogany font-semibold">
                                         {{ ucwords(str_replace('-', ' ', $article->target_city_slug)) }}
                                     </span>
                                 @endif
                             </div>
 
-                            <h2 class="font-bold text-lg text-navy-950 leading-snug hover:text-emerald-700 transition-colors">
-                                <a href="{{ route('articles.show', $article->slug) }}" class="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 rounded">
+                            <h2 class="font-bold text-lg text-industry-black leading-snug hover:text-burnt-brick transition-colors">
+                                <a href="{{ route('articles.show', $article->slug) }}" class="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-safety-orange rounded">
                                     {{ $article->title }}
                                 </a>
                             </h2>
 
                             @if($article->excerpt)
-                                <p class="text-sm text-concrete-600 leading-relaxed line-clamp-3">
+                                <p class="text-sm text-dark-mahogany leading-relaxed line-clamp-3">
                                     {{ $article->excerpt }}
                                 </p>
                             @endif
                         </div>
                     </div>
 
-                    <div class="px-6 pb-6">
-                        <a href="{{ route('articles.show', $article->slug) }}" class="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-700 hover:text-emerald-800 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 rounded">
+                    <div class="px-6 pb-6 mt-auto">
+                        <a href="{{ route('articles.show', $article->slug) }}" class="inline-flex items-center gap-1.5 text-xs font-bold text-burnt-brick hover:text-safety-orange transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-safety-orange rounded">
                             <span>Baca Selengkapnya</span>
                             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                         </a>
@@ -81,12 +81,12 @@
                 </article>
             @empty
                 <div class="col-span-3 py-20 text-center space-y-4">
-                    <div class="w-16 h-16 mx-auto rounded-full bg-navy-50 flex items-center justify-center" aria-hidden="true">
-                        <svg class="w-8 h-8 text-navy-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    <div class="w-16 h-16 mx-auto rounded-full bg-neutral-100 flex items-center justify-center" aria-hidden="true">
+                        <svg class="w-8 h-8 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
                     </div>
-                    <p class="font-bold text-navy-950">Belum ada artikel yang diterbitkan.</p>
-                    <p class="text-sm text-concrete-500">Panduan dan regulasi terkini seputar pengelolaan ahli k3 umum dan K3 akan segera hadir.</p>
-                    <a href="{{ route('home') }}" class="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500">
+                    <p class="font-bold text-industry-black">Belum ada artikel yang diterbitkan.</p>
+                    <p class="text-sm text-dark-mahogany">Panduan dan regulasi terkini seputar pengelolaan alat berat dan K3 akan segera hadir.</p>
+                    <a href="{{ route('home') }}" class="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-lg bg-safety-orange hover:bg-burnt-brick text-industry-black hover:text-white font-bold text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-safety-orange">
                         &larr; Kembali ke Beranda
                     </a>
                 </div>

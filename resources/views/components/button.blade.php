@@ -6,7 +6,7 @@
 ])
 
 @php
-    $baseClasses = 'inline-flex items-center justify-center font-semibold rounded-lg transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-safety-500 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none cursor-pointer text-center';
+    $baseClasses = 'inline-flex items-center justify-center font-bold rounded-lg transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-safety-orange focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none cursor-pointer text-center';
 
     $sizes = [
         'sm' => 'px-3.5 py-1.5 text-xs sm:text-sm gap-1.5 min-h-[38px]',
@@ -15,11 +15,12 @@
     ];
 
     $variants = [
-        'primary' => 'bg-safety-500 hover:bg-safety-400 text-navy-950 shadow-sm active:bg-safety-600 font-bold',
-        'secondary' => 'bg-navy-900 hover:bg-navy-800 text-white shadow-sm border border-navy-800 active:bg-navy-950',
-        'outline' => 'bg-transparent hover:bg-concrete-100 text-navy-900 border border-concrete-300 active:bg-concrete-200',
-        'white' => 'bg-white hover:bg-concrete-100 text-navy-950 shadow-sm active:bg-concrete-200 font-semibold',
-        'wa' => 'bg-wa-500 hover:bg-wa-600 text-white shadow-sm active:bg-wa-700 font-semibold',
+        'primary' => 'bg-safety-orange hover:bg-burnt-brick text-industry-black hover:text-white shadow-md active:bg-dark-mahogany font-bold',
+        'secondary' => 'bg-white hover:bg-neutral-100 text-dark-mahogany font-bold shadow-sm border-2 border-dark-mahogany active:bg-neutral-200',
+        'outline' => 'bg-transparent hover:bg-dark-mahogany hover:text-white text-dark-mahogany font-bold border-2 border-dark-mahogany active:bg-dark-mahogany',
+        'white' => 'bg-white hover:bg-neutral-100 text-industry-black font-semibold shadow-sm border border-neutral-300',
+        'wa' => 'bg-safety-orange hover:bg-burnt-brick text-industry-black hover:text-white shadow-md active:bg-dark-mahogany font-bold',
+        'dark' => 'bg-industry-black hover:bg-dark-mahogany text-white font-bold shadow-md border border-neutral-700 active:bg-industry-black',
     ];
 
     $sizeClasses = $sizes[$size] ?? $sizes['md'];

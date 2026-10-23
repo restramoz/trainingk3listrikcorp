@@ -319,7 +319,7 @@ return [
         'category'          => 'service',
         'category_label'    => 'Jasa Konsultansi K3',
         'level'             => 'Layanan Konsultansi',
-        'title'             => 'Jasa Audit & Penyusunan SMK3',
+        'title'             => 'Jasa Audit & Penyusunan SMK3 (PP 50/2012)',
         'badge'             => 'PP No. 50 Tahun 2012 — SMK3',
         'meta_title'        => 'Jasa Audit & Penyusunan SMK3 | PP No. 50/2012',
         'meta_description'  => 'Layanan konsultansi audit internal dan penyusunan Sistem Manajemen K3 (SMK3) sesuai PP No. 50/2012. Gap analysis, dokumentasi kebijakan K3, dan persiapan audit eksternal.',
